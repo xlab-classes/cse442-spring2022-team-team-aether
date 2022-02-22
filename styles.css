@@ -63,6 +63,9 @@ body{
     padding: 9px;
     border-radius: 5px;
 }
+.vitem:hover{
+    background-color: var(--accent) ;
+}
 .meme{
 
     width: 70%;
@@ -78,12 +81,16 @@ body{
     background-color: var(--accentd);
     padding-top: 1%;
     padding-left: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     padding-right: 5%;
     border-radius: 10px;
 }
 .link{
     text-decoration: none;
+    text-emphasis-color: var(--link);
+    color: var(--link);
+}
+.llink {
     text-emphasis-color: var(--link);
     color: var(--link);
 }
