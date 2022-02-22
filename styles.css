@@ -29,7 +29,7 @@ body{
   padding: 9px;
   border-radius: 5px;
 }
-#item:hover{
+.item:hover{
   background-color: var(--maind) ;
 }
 #contain {
