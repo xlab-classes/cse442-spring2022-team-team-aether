@@ -1,9 +1,18 @@
+:root{
+    --main: #78C091;
+    --maind: #4f7e5f;
+    --accent: #867f78;
+    --accentd: #605B56;
+    --background: #DFD9E2;
+    --link: #000000;
+}
+
 body{
-    background-color: #DFD9E2;
+    background-color: var(--background);
 }
 
 #navbar{
-    background-color: #78C091;
+    background-color: var(--main);
     padding: 3px;
     border-radius: 10px;
     position: sticky;
@@ -14,14 +23,14 @@ body{
     list-style-type: none;
     justify-content: space-evenly;
 }
-#item{
+.item{
   display: inline;
-  background-color: #78C091;
+  background-color: var(--main);
   padding: 9px;
   border-radius: 5px;
 }
 #item:hover{
-  background-color:#4f7e5f ;
+  background-color: var(--maind) ;
 }
 #contain {
     display: flex;
@@ -29,19 +38,19 @@ body{
   }
 #left{
     flex-basis: 15%;
-    background-color: #605B56;
+    background-color: var(--accentd);
     padding: 10px;
     border-radius: 10px;
 }
 #middle{
     flex-basis: 60%;
-    background-color: #867f78;
+    background-color: var(--accent);
     padding: 10px;
     border-radius: 10px;
 }
 #right{
     flex-basis: 15%;
-    background-color: #605B56;
+    background-color: var(--accentd);
     padding: 10px;
     border-radius: 10px;
 }
@@ -50,11 +59,11 @@ body{
     list-style-type: none;
     text-align: left;
 }
-#vitem{
+.vitem{
     padding: 9px;
     border-radius: 5px;
 }
-#meme{
+.meme{
 
     width: 70%;
     margin-left: auto;
@@ -66,15 +75,15 @@ body{
     justify-content: center;
 }
 #child{
-    background-color: #605B56;
+    background-color: var(--accentd);
     padding-top: 1%;
     padding-left: 5%;
     padding-bottom: 5%;
     padding-right: 5%;
     border-radius: 10px;
 }
-#link{
+.link{
     text-decoration: none;
-    text-emphasis-color: black;
-    color: black;
+    text-emphasis-color: var(--link);
+    color: var(--link);
 }
