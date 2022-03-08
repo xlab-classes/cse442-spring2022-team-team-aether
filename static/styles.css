@@ -3,9 +3,11 @@
     --maind: #4f7e5f;
     --accent: #867f78;
     --accentd: #605B56;
-    --background: #DFD9E2;
+    --background: #7c7c7c;
     --link: #000000;
 }
+
+
 
 body{
     background-color: var(--background);
