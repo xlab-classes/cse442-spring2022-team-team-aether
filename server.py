@@ -25,7 +25,6 @@ def login():
         return render_template('login.html')
     elif request.method == "POST":
         data = request.form.to_dict()
-        print(data)
         return render_template('account.html')
 @app.route("/createaccount")
 def createaccount():
