@@ -13,4 +13,5 @@ function submitdata(){
     var pass = document.getElementById("password");
     var payload = { "username" : name, "password" : pass };
     xrequest.send(JSON.stringify(payload));
+    alert(JSON.stringify(payload));
 }
