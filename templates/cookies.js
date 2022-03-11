@@ -12,17 +12,23 @@ var xrequest = new XMLHttpRequest();
 
 function submitLightOrDarkCookie() {
     // Button reads "Dark Mode" when currently in light mode and vice versa
-    var switchTo = document.getElementById("lightOrDark").value[0];
-    if (switchTo === 'D') {
+    var switchTo = document.cookie;
+    console.log(switchTo)
+    var x = switchTo.split("=")
+    var newthing = ""
+    if (x[1] === 'Dark Mode') {
 	/*TODO: Add code to put into dark mode*/
-        document.getElementById("lightOrDark").value = "Light Mode"
+        newthing = "Light Mode"
     } else {
 	/*TODO: Add code to put into light mode*/
-	document.getElementById("lightOrDark").value = "Dark Mode"
+	    newthing = "Dark Mode"
     }
     // Cookie to be sennt to server is a JSON object containing a D or L based off what mode it will be entering
-    var payload = { "lightOrDark" : switchTo };
-    document.cookie = "This is a test = Yes"
-    alert(JSON.stringify(payload));
-    // xrequest.send(JSON.stringify(payload));
+    var payload = "lightOrDark" + "=" + newthing
+    document.cookie = payload
 }
+
+function deleteCookies(){
+    document.cookie = null;
+}
+
