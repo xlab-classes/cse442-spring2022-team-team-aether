@@ -1,16 +1,18 @@
 :root{
     --main: #92DCE5;
     --maind: #46adbb;
-    --accent: rgb(161, 153, 145);
+    --accent: #a0a0a0;
     --accentd: #7C7C7C;
     --background: #DFD9E2;
     --link: #000000;
 
-    --color1: #2D4066;
-    --color2: #92DCE5;
+    --color1: #526da1;
+    --color2: #2D4066;
     --color3: #7C7C7C;
-    --color4: #537A5A;
+    --color4: #585858;
     --color5: #FAA64D;
+    --color6: #000000;
+    --color7: #DFD9E2;
 }
 
 body{
