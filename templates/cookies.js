@@ -10,21 +10,6 @@ var xrequest = new XMLHttpRequest();
 // xrequest.setRequestHeader("Accept", "application/json");
 // xrequest.setRequestHeader("Content-Type", "application/json");
 
-
-class Cookie {		// This class can be extended based off the type of cookie
-
-    var cookieString;
-
-    constructor(variable, value) {
-        this.cookieString = variable + "=" + value;
-    }
-
-    function modifyCookie() {
-	// This will modify document.cookie
-    }
-
-}
-
 function submitLightOrDarkCookie() {
     // Button reads "Dark Mode" when currently in light mode and vice versa
     var switchTo = document.cookie;
@@ -43,7 +28,4 @@ function submitLightOrDarkCookie() {
     document.cookie = payload
 }
 
-function deleteCookies(){
-    document.cookie = null;
-}
 
