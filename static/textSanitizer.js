@@ -5,9 +5,10 @@ function sanitizeData(text) {
     var cleanText = text;
     // General syntax breaker
     cleanText = cleanText.replaceAll(";", "");
-    cleanText = cleanText.replaceAll("&", "");
-    cleanText = cleanText.replaceAll("<", "");
-    cleanText = cleanText.replaceAll(">", "");
+    // Replace HTML characters
+    cleanText = cleanText.replaceAll("&", "&amp");
+    cleanText = cleanText.replaceAll("<", "&lt");
+    cleanText = cleanText.replaceAll(">", "&gt");
     do {
         // Finish off with SQL commands
         cleanText = cleanText.replaceAll("SELECT", "");
