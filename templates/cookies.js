@@ -33,9 +33,11 @@ function submitLightOrDarkCookie() {
 function startup(){
     var version = checkcookie()
     if(version == 1){
-        document.body.style.background = "#000000"
+        swapStyleSheet("../static/darkstyles.css")
+        //document.body.style.background = "#000000"
     }else{
-        document.body.style.background = "#DFD9E2"
+        swapStyleSheet("../static/styles.css")
+        //document.body.style.background = "#DFD9E2"
     }
 }
 
@@ -50,4 +52,7 @@ function checkcookie(){
     }else{
         return(0)
     }
+}
+function swapStyleSheet(sheet) {
+    document.getElementById("sheet").setAttribute("href", sheet);  
 }

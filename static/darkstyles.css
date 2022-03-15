@@ -1,10 +1,10 @@
 :root{
-    --main: #92DCE5;
-    --maind: #46adbb;
-    --accent: #a0a0a0;
-    --accentd: #7C7C7C;
-    --background: #DFD9E2;
-    --link: #000000;
+    --main: #526da1;
+    --maind: #2D4066;
+    --accent: #7C7C7C;
+    --accentd: #585858;
+    --background: #000000;
+    --link: #DFD9E2;
 
     --color1: #526da1;
     --color2: #2D4066;
@@ -19,12 +19,11 @@ body{
     background-color: var(--background);
 }
 h1{
-    color: black;
+    color: white;
 }
-p{
-    color: black;
+body{
+    color: white;
 }
-
 
 #navbar{
     background-color: var(--main);
