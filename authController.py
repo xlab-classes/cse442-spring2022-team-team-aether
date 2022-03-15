@@ -8,6 +8,31 @@ db = mysql.connector.connect(
   database="serverdata"
 )
 
-def login(username, password):
 
-  return
+def authlogin(username, password):
+  cursor = db.cursor()
+  cursor.execute("SELECT * FROM users WHERE username=?", username)
+  res = cursor.fetchall()
+  print(res)
+  hpass = bcrypt.gensalt()
+  if (bcrypt.checkpw(password, hpass)):
+    return True
+  else:
+    return False
+
+def authcreateAccount(username, password):
+  cursor = db.cursor()
+  cr = "CREATE TABLE [IF NOT EXISTS] users (username, password) "
+  cursor.execute(cr)
+  db.commit()
+  salt = bcrypt.gensalt()
+  hashpw = bcrypt.hashpw(password.encode(), salt)
+  print("Password is " + hashpw)
+  addU = "INSERT IGNORE INTO users (username, password) VALUES (%s, %s)"
+  val = [username, hashpw]
+  cursor.execute(addU, val)
+  db.commit()
+  return True
+
+def authgetData(username):
+  return None

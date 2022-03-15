@@ -28,11 +28,18 @@ def login():
         data = request.form.to_dict()
         username = data["Username"]
         password = data["Password"]
+        authController.authlogin(username, password)
         return render_template('account.html')
-@app.route("/createaccount")
+@app.route("/createaccount", methods=["GET","POST"])
 def createaccount():
-    return render_template('createaccount.html')
-
+    if request.method == "GET":
+        return render_template('createaccount.html')
+    elif request.method == "POST":
+        data = request.form.to_dict()
+        username = data["Username"]
+        password = data["Password"]
+        authController.authcreateAccount(username, password)
+        return render_template('account.html')
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
