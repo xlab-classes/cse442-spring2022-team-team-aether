@@ -26,6 +26,28 @@ function submitLightOrDarkCookie() {
     // Cookie to be sennt to server is a JSON object containing a D or L based off what mode it will be entering
     var payload = "lightOrDark" + "=" + newthing
     document.cookie = payload
+    startup()
 }
 
 
+function startup(){
+    var version = checkcookie()
+    if(version == 1){
+        document.body.style.background = "#000000"
+    }else{
+        document.body.style.background = "#DFD9E2"
+    }
+}
+
+function checkcookie(){
+    var x = document.cookie
+    console.log("checking cookie")
+    var list = x.split("=")
+    console.log(list[1])
+    console.log("cookie status ^^")
+    if(list[1] == 'Dark Mode'){
+        return(1)
+    }else{
+        return(0)
+    }
+}
