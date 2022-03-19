@@ -22,14 +22,14 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE [IF NOT EXISTS] users (username, password) "
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(30) UNIQUE NOT NULL PRIMARY KEY, password VARCHAR(30) UNIQUE NOT NULL)"
   cursor.execute(cr)
   db.commit()
   salt = bcrypt.gensalt()
   hashpw = bcrypt.hashpw(password.encode(), salt)
   print("Password is " + hashpw)
   addU = "INSERT IGNORE INTO users (username, password) VALUES (%s, %s)"
-  val = [username, hashpw]
+  val = (username, hashpw)
   cursor.execute(addU, val)
   db.commit()
   return True
