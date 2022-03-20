@@ -21,6 +21,12 @@ function sanitizeData(text) {
         cleanText = cleanText.replaceAll("delete", "");
     } while (cleanText.toLowerCase().includes("select") && cleanText.toLowerCase().includes("create") &&
     	cleanText.toLowerCase().includes("update") && cleanText.toLowerCase().includes("delete"));
-    alert(cleanText); // For testing purposes
+    // Stripping of additional spaces
+    for (i=cleanText.length; i>0; i--) {
+	if (cleanText[i]==' '&&cleanText[i-1]==' ') {
+	    cleanText = cleanText.substring(0,i-1) + cleanText.substring(i+1);
+	}
+    }
+    alert("Search string: " + cleanText); // For testing purposes
     return cleanText;
 }
