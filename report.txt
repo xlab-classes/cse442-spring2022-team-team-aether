@@ -1,0 +1,5 @@
+For now we are making use of the Flask library. 
+
+Flask will be used to manage login sessions later on down the line. 
+For now it will simply be used to serve up HTML that will later become dynamic.
+Flask Render templates, and send from directory are being used to serve up HTML and static files. 
