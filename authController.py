@@ -11,7 +11,7 @@ db = mysql.connector.connect(
 
 def authlogin(username, password):
   cursor = db.cursor()
-  cursor.execute("SELECT * FROM users WHERE username = %s", username)
+  cursor.execute("SELECT password FROM users WHERE username = %s", username)
   res = cursor.fetchall()
   print(res)
   hpass = bcrypt.gensalt()
