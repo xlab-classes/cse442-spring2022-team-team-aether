@@ -1,7 +1,5 @@
-import os
-import re
-import flask
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
+import authController
 app = Flask(__name__)
 
 
@@ -10,11 +8,9 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
-
 @app.route("/make")
 def make():
     return render_template("make.html")
-
 
 @app.route('/static/frontEngine')
 def send_engine(path):
@@ -24,14 +20,26 @@ def send_engine(path):
 def send_styles(path):
     return send_from_directory('css', path)
 
-@app.route("/login")
+@app.route("/login", methods=["GET","POST"])
 def login():
-    return render_template('login.html')
-
-@app.route("/createaccount")
+    if request.method == "GET":
+        return render_template('login.html')
+    elif request.method == "POST":
+        data = request.form.to_dict()
+        username = data["Username"]
+        password = data["Password"]
+        authController.authlogin(username, password)
+        return render_template('account.html')
+@app.route("/createaccount", methods=["GET","POST"])
 def createaccount():
-    return render_template('createaccount.html')
-
+    if request.method == "GET":
+        return render_template('createaccount.html')
+    elif request.method == "POST":
+        data = request.form.to_dict()
+        username = data["Username"]
+        password = data["Password"]
+        authController.authcreateAccount(username, password)
+        return render_template('account.html')
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
