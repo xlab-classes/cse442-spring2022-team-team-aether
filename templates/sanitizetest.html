@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script type="text/javascript" src="../static/textSanitizer.js"></script>
+    <title>search</title>
+</head>
+<body>
+    <h2>Search</h2>
+    <div id="navbar">
+        <ul id="bar" >
+            <li class="item"><a href="index" class="link">home</a></li>
+            <li class="item"><a href="make" class="link">make</a></li>
+            <li class="item"><a href="search" class="link">search</a></li>
+            <li class="item"><a href="popular" class="link">popular</a></li>
+            <li class="item"> <a href="login" class="link">log in</a> </li>
+        </ul>
+    </div>
+    <div id="searcharea">
+	<ul id="searchzone">
+	    <li class="item"><input type="text" id="userdata"></li>
+	    <li class="item"><button type="button"
+	        onclick="sanitizeData(document.getElementById('userdata').value);"
+		value="Search">Search</button>
+	    </li>
+	</ul>
+    </div>
+    <br>
+</body>
+</html>
