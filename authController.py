@@ -2,8 +2,8 @@ import mysql.connector
 import bcrypt
 
 db = mysql.connector.connect(
-  host="localhost",
-  user="server",
+  host="127.0.0.1",
+  user="root",
   password="pass",
   database="serverdata"
 )
@@ -11,25 +11,29 @@ db = mysql.connector.connect(
 
 def authlogin(username, password):
   cursor = db.cursor()
-  cursor.execute("SELECT * FROM users WHERE username=?", username)
+  cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
   res = cursor.fetchall()
-  print(res)
-  hpass = bcrypt.gensalt()
-  if (bcrypt.checkpw(password, hpass)):
+  print(res[0][0])
+  hpass = res[0][0]
+  if (bcrypt.checkpw(password.encode(), hpass.encode())):
+    print("logged in")
     return True
   else:
+    print("failed")
     return False
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE [IF NOT EXISTS] users (username, password) "
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
   salt = bcrypt.gensalt()
   hashpw = bcrypt.hashpw(password.encode(), salt)
-  print("Password is " + hashpw)
-  addU = "INSERT IGNORE INTO users (username, password) VALUES (%s, %s)"
+  print("Password is " + hashpw.decode())
+
+  addU = "INSERT INTO users (username, password) VALUES (%s, %s)"
   val = [username, hashpw]
+  print(val)
   cursor.execute(addU, val)
   db.commit()
   return True
