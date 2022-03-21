@@ -13,6 +13,9 @@ def authlogin(username, password):
   cursor = db.cursor()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
   res = cursor.fetchall()
+  if not res:
+    print("account doesn't exist")
+    return False
   print(res[0][0])
   hpass = res[0][0]
   if (bcrypt.checkpw(password.encode(), hpass.encode())):
@@ -27,6 +30,11 @@ def authcreateAccount(username, password):
   cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
+  cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
+  detec = cursor.fetchall()
+  if detec:
+    print("user already exists")
+    return False
   salt = bcrypt.gensalt()
   hashpw = bcrypt.hashpw(password.encode(), salt)
   print("Password is " + hashpw.decode())
