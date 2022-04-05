@@ -24,15 +24,33 @@ function updateCanvas(canvas, image, text1, text2) {
     //document.getElementById("backup").src = image.src
     console.log("drawing image")
     context.drawImage(image, 0, 0);
+
+    const fontSize = Math.floor(width / 10);
+    const yOffset = height / 25;
+
+
+    var ctx = context
+
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = Math.floor(fontSize / 4);
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.lineJoin = "round";
+    ctx.font = `${fontSize}px sans-serif`;
+
+    // Add top text
+    ctx.textBaseline = "top";
+    ctx.strokeText(text1, width / 2, yOffset);
+    ctx.fillText(text1, width / 2, yOffset);
+
+    // Add bottom text
+    ctx.textBaseline = "bottom";
+    ctx.strokeText(text2, width / 2, height - yOffset);
+    ctx.fillText(text2, width / 2, height - yOffset);
     //context.drawImage("../blankmemes/drake.jpg", 0, 0);
 }   
 
 //image.addEventListener('load', imageLoaded())
-
-function imageLoaded(){
-    console.log("drawing image")
-    context.drawImage(image, 0, 0);
-}
 
 function updateImage(){
     file = document.getElementById('templates');

@@ -17,6 +17,7 @@
 
 body{
     background-color: var(--background);
+    font-family: 'BIZ UDGothic', sans-serif;
 }
 h1{
     color: black;
