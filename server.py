@@ -1,6 +1,8 @@
 from flask import Flask, render_template, send_from_directory, request
 import authController
+
 app = Flask(__name__)
+
 
 
 @app.route("/index")
@@ -12,8 +14,8 @@ def root():
 def make():
     return render_template("make.html")
 
-@app.route('/static/frontEngine')
-def send_engine(path):
+@app.route('/static/hasher')
+def send_hash(path):
     return send_from_directory('js', path)
 
 @app.route('/static/styles')
@@ -38,8 +40,22 @@ def createaccount():
         data = request.form.to_dict()
         username = data["Username"]
         password = data["Password"]
-        authController.authcreateAccount(username, password)
-        return render_template('account.html')
+        flag = True
+        if (not any(chr.isdigit() for chr in password)):
+            print("invalid password, no number present")
+            flag = False
+        if (len(password) < 8):
+            print("password too short")
+            flag = False
+        if (len(password) > 24):
+            print("password too long")
+            flag = False
+        print(password)
+        if (flag):
+            authController.authcreateAccount(username, password)
+            return render_template('account.html')
+        else:
+            return "invalid password chosen"
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
@@ -54,4 +70,7 @@ def search():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    #adhoc is just for testing purposes
+    #in order to get a legitament HTTP connection established
+    #we need a certificate
+    app.run(debug=True, ssl_context="adhoc")
