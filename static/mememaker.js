@@ -1,9 +1,9 @@
-const file = document.getElementById('templates');
-const filename = file.value;
-const text1n = document.getElementById('FirstText');
-const text1 = text1n.value;
-const text2n = document.getElementById('SecondText');
-const text2 = text2n.value;
+var file = document.getElementById('templates');
+var filename = file.value;
+var text1n = document.getElementById('FirstText');
+var text1 = text1n.value;
+var text2n = document.getElementById('SecondText');
+var text2 = text2n.value;
 const canvas = document.getElementById('meme');
 const filestarter = "../templates/blankmemes/"
 const context = canvas.getContext("2d");
@@ -19,9 +19,9 @@ function updateCanvas(canvas, image, text1, text2) {
     console.log(image)
 
 
-    canvas.width = width;
-    canvas.height = height;
-    document.getElementById("backup").src = image.src
+    canvas.width = 225;
+    canvas.height = 225;
+    //document.getElementById("backup").src = image.src
     console.log("drawing image")
     context.drawImage(image, 0, 0);
     //context.drawImage("../blankmemes/drake.jpg", 0, 0);
@@ -35,6 +35,12 @@ function imageLoaded(){
 }
 
 function updateImage(){
+    file = document.getElementById('templates');
+    filename = file.value;
+    text1n = document.getElementById('FirstText');
+    text1 = text1n.value;
+    text2n = document.getElementById('SecondText');
+    text2 = text2n.value;
     console.log("updating image");
     console.log(filename)
     console.log(text1)
