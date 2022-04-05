@@ -4,7 +4,7 @@ import bcrypt
 db = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="pass",
+  password="mysqlRoot00!",
   database="serverdata"
 )
 
@@ -27,7 +27,7 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64), primary key (username))"
   cursor.execute(cr)
   db.commit()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
