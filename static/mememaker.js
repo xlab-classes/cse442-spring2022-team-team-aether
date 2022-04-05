@@ -9,6 +9,10 @@ const filestarter = "../templates/blankmemes/"
 const context = canvas.getContext("2d");
 let image;
 
+const textPlacement = {
+    "drake":[.75, .75, 2]
+}
+
 function updateCanvas(canvas, image, text1, text2) {
     const width = image.width;
     const height = image.height;
@@ -26,27 +30,27 @@ function updateCanvas(canvas, image, text1, text2) {
     context.drawImage(image, 0, 0);
 
     const fontSize = Math.floor(width / 10);
-    const yOffset = height / 25;
+    const yOffset = height / 50;
 
+    const y1 = height / 5;
 
     var ctx = context
 
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = Math.floor(fontSize / 4);
-    ctx.fillStyle = "white";
+    context.strokeStyle = "black";
+    ctx.lineWidth = Math.floor(fontSize / 8);
+    //ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.lineJoin = "round";
     ctx.font = `${fontSize}px sans-serif`;
 
     // Add top text
     ctx.textBaseline = "top";
-    ctx.strokeText(text1, width / 2, yOffset);
-    ctx.fillText(text1, width / 2, yOffset);
-
+    //ctx.strokeText(text1, 3*(width / 4), yOffset);
+    ctx.fillText(text1, 3*(width / 4), y1);
     // Add bottom text
     ctx.textBaseline = "bottom";
-    ctx.strokeText(text2, width / 2, height - yOffset);
-    ctx.fillText(text2, width / 2, height - yOffset);
+    //ctx.strokeText(text2, 3*(width / 4), height - yOffset);
+    ctx.fillText(text2, 3*(width / 4), height - y1);
     //context.drawImage("../blankmemes/drake.jpg", 0, 0);
 }   
 
