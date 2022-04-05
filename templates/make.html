@@ -19,5 +19,25 @@
         </ul>
     </div>
     <br>
+    <div id="makebox">
+        <div id="options">
+            <form action="/make" id="make" method="post" enctype="multipart/form-data">
+                <label for="templates">Choose a template:</label>
+                <select id="templates" name="templates">
+                <option value="Drake">Drake</option>
+                <option value="Uno">Or Draw 25</option>
+                <option value="Cheating">Cheating Man</option>
+                <option value="Trade">Trade Offer</option>
+                </select> 
+                <br>
+                <label for="FirstText">First Line: </label>
+                <input id="FirstText" type="text" name="FirstText">
+                <br>
+                <label for="SecondText">Second Line: </label>
+                <input id="SecondText" type="text" name="SecondText">
+                <input type="submit" value="make">
+            </form>
+        </div>
+    </div>  
 </body>
 </html>
