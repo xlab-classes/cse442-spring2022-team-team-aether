@@ -6,10 +6,10 @@ const text2n = document.getElementById('SecondText');
 const text2 = text2n.value;
 const canvas = document.getElementById('meme');
 const filestarter = "../templates/blankmemes/"
+const context = canvas.getContext("2d");
 let image;
 
 function updateCanvas(canvas, image, text1, text2) {
-    const context = canvas.getContext("2d");
     const width = image.width;
     const height = image.height;
     console.log("image width")
@@ -21,11 +21,18 @@ function updateCanvas(canvas, image, text1, text2) {
 
     canvas.width = width;
     canvas.height = height;
-    //const backup = document.getElementById("backup")
-    //backup.src = image.src
-    context.drawImage("../templates/blankmemes/drake.jpg", 0, 0);
+    document.getElementById("backup").src = image.src
+    console.log("drawing image")
+    context.drawImage(image, 0, 0);
     //context.drawImage("../blankmemes/drake.jpg", 0, 0);
 }   
+
+//image.addEventListener('load', imageLoaded())
+
+function imageLoaded(){
+    console.log("drawing image")
+    context.drawImage(image, 0, 0);
+}
 
 function updateImage(){
     console.log("updating image");
