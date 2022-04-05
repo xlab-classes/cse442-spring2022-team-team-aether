@@ -1,4 +1,3 @@
-
 function createSubmit(){
     var formData = new FormData();
     let form1 = document.getElementById("createaccount");
