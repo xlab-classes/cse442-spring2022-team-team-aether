@@ -46,5 +46,27 @@ def authcreateAccount(username, password):
   db.commit()
   return True
 
+# Will store a user selected meme into their history
+# returns False if the image does not exist, true otherwise
+def storeInHistory(imgname):
+  cursor = db.cursor()
+  # TODO
+  # - FIGURE OUT HOW TO STORE IMAGES AS DATA
+  # AND HOW TO RETRIEVE DATA
+  # Below is a possible statement
+  cr = "SELECT imgname FROM images WHERE imgname = (%s)"
+  cursor.execute(cr, imgname)
+  detec = cursor.fetchall()
+  if not detec:
+    return False
+  # TODO
+  # - FIGURE OUT IF WE NEED TO MAKE A NEW DATABASE
+  # - FIGURE OUT HOW TO ADD & MODIFY HISTORY DATA TO users DB
+  # This includes moving history[1] -> history[2], history[2] -> history[3] etc.
+  # Unsure of what to do here due to not knowing SQL pointers
+  cr = ""
+  return True
+
 def authgetData(username):
   return None
+
