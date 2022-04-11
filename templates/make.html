@@ -28,20 +28,46 @@
         </div>
         <div id="options">
             <form action="/make" id="make" method="post" enctype="multipart/form-data">
-                <label for="templates">Choose a template:</label>
-                <select id="templates" name="templates">
-                <option value="drake">Drake</option>
-                <option value="uno">Or Draw 25</option>
-                <option value="cheating">Cheating Man</option>
-                <option value="trade">Trade Offer</option>
-                </select> 
-                <br>
-                <label for="FirstText">First Line: </label>
-                <input id="FirstText" type="text" name="FirstText">
-                <br>
-                <label for="SecondText">Second Line: </label>
-                <input id="SecondText" type="text" name="SecondText">
-                <input type="submit" value="make" onclick="updateImage();">
+                <table>
+                    <tr>
+                    <td><label for="templates">Choose a template:</label></td>
+                    <td><select id="templates" name="templates">
+                        <option value="drake">Drake</option>
+                        <option value="uno">Or Draw 25</option>
+                        <option value="cheating">Cheating Man</option>
+                        <option value="trade">Trade Offer</option>
+                    </select> </td>
+                    </tr>
+                    <!--<br>-->
+                    <tr>
+                    <td><label for="TextColor">Font Color: </label></td>
+                    <td><select name="TextColor" id="TextColor">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                    </select></td>
+                    </tr>
+                    <br>
+                    <tr>
+                    <td><label for="FirstText">First Line: </label></td>
+                    <td><input id="FirstText" type="text" name="FirstText"></td>
+                    </tr>
+                    <br>
+                    <tr>
+                    <td><label for="SecondText">Second Line: </label></td>
+                    <td><input id="SecondText" type="text" name="SecondText"></td>
+                    <br>
+                    </tr>
+                    <tr>
+                    <td><input type="submit" value="make" onclick="updateImage();"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a id="download" download="meme.png">
+                                <button type="button" onclick="download()">Download</button>
+                                </a>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </div>  
