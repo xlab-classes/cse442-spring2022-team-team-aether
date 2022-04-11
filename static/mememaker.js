@@ -13,7 +13,7 @@ const textPlacement = {
     "drake":[.75, .75, 2]
 }
 
-function updateCanvas(canvas, image, text1, text2) {
+function updateCanvas(canvas, image, text1, text2, file) {
     const width = image.width;
     const height = image.height;
     console.log("image width")
@@ -22,7 +22,8 @@ function updateCanvas(canvas, image, text1, text2) {
     console.log(height)
     console.log(image)
 
-
+    const measures = textPlacement[file]
+    console.log(measures)
     canvas.width = 225;
     canvas.height = 225;
     //document.getElementById("backup").src = image.src
@@ -72,5 +73,5 @@ function updateImage(){
     image.src = filestarter.concat((filename.concat('.jpg')));
     console.log(image.src);
 
-    updateCanvas(canvas, image, text1, text2)
+    updateCanvas(canvas, image, text1, text2, filename)
 }
