@@ -5,7 +5,7 @@ var text1 = text1n.value;
 var text2n = document.getElementById('SecondText');
 var text2 = text2n.value;
 const canvas = document.getElementById('meme');
-const filestarter = "../templates/blankmemes/"
+const filestarter = "../templates/"
 const context = canvas.getContext("2d");
 let image;
 
@@ -15,10 +15,17 @@ const textPlacement = {
     "cheating":[.25, .75, 2, 4],
     "trade":[.25, .75, 4.5, 1.37]
 }
+const imageLinks = {
+    "drake": "https://www.dropbox.com/s/mrqw5esa1b3l43g/drake.jpg?raw=1",
+    "uno": "https://drive.google.com//uc?export=view&id=1aO31xxRHGe6WgJMv_HQIEsOjH-7PPtx8",
+    "cheating": "https://imgur.com/TpMtLkN.jpg",
+    "trade": "https://drive.google.com//uc?export=view&id=1MSUM1W04fk-L8R0kJQ9cpzRqB2yY_8KX"
+}
 
 function updateCanvas(canvas, image, text1, text2, file, color) {
     const width = image.width;
     const height = image.height;
+    console.log(image.crossOrigin)
     console.log("image width")
     console.log(width)
     console.log("image height")
@@ -75,15 +82,21 @@ function updateImage(){
     console.log(text1)
     console.log(text2)
     image = new Image();
-    
-    image.src = filestarter.concat((filename.concat('.jpg')));
+
+   // image.crossOrigin = "use-credentials";
+    image.src =  filename.concat('.jpg')//filestarter.concat((filename.concat('.jpg')));
+    //image.crossOrigin = "use-credentials";
     console.log(image.src);
 
     updateCanvas(canvas, image, text1, text2, filename, textColor)
 }
 function download() {
     var canvas = document.getElementById("meme");
-    let image = canvas.toDataURL("image/png");
+    var ctx = canvas.getContext("2d")
+    //var what = ctx.getImageData()
+    //console.log(what)
+    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+    console.log(image)
     //var link = document.createElement('a');
     //link.download = "my-image.png";
     //link.href = image;
