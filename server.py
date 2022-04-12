@@ -1,5 +1,5 @@
 from flask import Flask, render_template, send_from_directory, request
-import authController
+import authController, historydb
 app = Flask(__name__)
 
 
@@ -54,7 +54,7 @@ def search():
 
 @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
 def imgpage(creator,imgname):
-    found = authController.storeInHistory(creator,imgname)
+    found = historydb.storeInHistory(creator,imgname)
     if not found:
         return "The meme you are looking for does not exist"
     return 'Received ' + imgname + ' by ' + creator
