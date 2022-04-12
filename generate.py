@@ -1,12 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 
-text1 = "test"
-text2 = "test2"
-
-#im = Image.open("uno.jpg")
-#edit = ImageDraw.Draw(im)
-#edit.text((15,15), text1, (237, 230, 211))
-#im.save("result.jpg")
 
 textLocations = {
     "drake":[.7, .7, 5, 1.5],
@@ -20,7 +13,7 @@ colorOptions = {
 }
 
 def generate_image(start, text1, text2, color):
-    image = Image.open(start+".jpg")
+    image = Image.open("generationFiles/"+start+".jpg")
     h = image.height
     w = image.width
     print("height: " + str(h))
@@ -29,7 +22,7 @@ def generate_image(start, text1, text2, color):
     text1w = w * textLocations[start][0]
     text2h = h / textLocations[start][3]
     text2w = w * textLocations[start][1]
-    font = ImageFont.truetype("arial.ttf", 15)
+    font = ImageFont.truetype("generationFiles/arial.ttf", 15)
     colorNums = colorOptions[color]
 
     edit = ImageDraw.Draw(image)
@@ -39,4 +32,4 @@ def generate_image(start, text1, text2, color):
     image.save("result.jpg")
 
 
-generate_image("cheating", "test1", "test2", "white")
+#generate_image("cheating", "test1", "test2", "white")

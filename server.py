@@ -1,5 +1,7 @@
+from re import template
 from flask import Flask, render_template, send_from_directory, request
 import authController
+import generate
 app = Flask(__name__)
 
 
@@ -8,9 +10,18 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
-@app.route("/make")
+@app.route("/make", methods=["GET", "POST"])
 def make():
-    return render_template("make.html")
+    if request.method == "GET":
+        return render_template("make.html")
+    else:
+        data = request.form.to_dict()
+        print(data["templates"])
+        print(data["TextColor"])
+        print(data["FirstText"])
+        print(data["SecondText"])
+        generate.generate_image(data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
+        return "sucessfully made image"
 
 @app.route('/static/frontEngine')
 def send_engine(path):
