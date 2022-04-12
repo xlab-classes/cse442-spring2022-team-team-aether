@@ -5,7 +5,7 @@ var text1 = text1n.value;
 var text2n = document.getElementById('SecondText');
 var text2 = text2n.value;
 const canvas = document.getElementById('meme');
-const filestarter = "../templates/"
+const filestarter = "../templates/blankmemes"
 const context = canvas.getContext("2d");
 let image;
 
@@ -84,7 +84,7 @@ function updateImage(){
     image = new Image();
 
    // image.crossOrigin = "use-credentials";
-    image.src =  filename.concat('.jpg')//filestarter.concat((filename.concat('.jpg')));
+    image.src =  filestarter.concat(filename.concat('.jpg'))//filestarter.concat((filename.concat('.jpg')));
     //image.crossOrigin = "use-credentials";
     console.log(image.src);
 
