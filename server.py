@@ -52,12 +52,12 @@ def account():
 def search():
     return render_template('search.html')
 
-@app.route("/img/<imgname>", methods=["GET", "POST"])
-def imgpage(imgname):
-    found = authController.storeInHistory(imgname)
+@app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
+def imgpage(creator,imgname):
+    found = authController.storeInHistory(creator,imgname)
     if not found:
         return "The meme you are looking for does not exist"
-    return 'Recieved' + imgname
+    return 'Received ' + imgname + ' by ' + creator
     # return '<image src="FIGURE_ME_OUT.jpg">'
 
 if __name__ == "__main__":
