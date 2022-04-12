@@ -1,5 +1,7 @@
 import mysql.connector
 import bcrypt
+import hashlib
+import base64
 
 db = mysql.connector.connect(
   host="localhost",
@@ -27,7 +29,7 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64), token VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
@@ -38,6 +40,7 @@ def authcreateAccount(username, password):
   salt = bcrypt.gensalt()
   hashpw = bcrypt.hashpw(password.encode(), salt)
   print("Password is " + hashpw.decode())
+
   addU = "INSERT INTO users (username, password) VALUES (%s, %s)"
   val = [username, hashpw]
   print(val)
@@ -45,38 +48,34 @@ def authcreateAccount(username, password):
   db.commit()
   return True
 
-# Will store a user selected meme into their history
-# returns False if the image does not exist, true otherwise
-def storeInHistory(creator,imgname):
+def updateToken(username, token):
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS history (username VARCHAR(64), idx INT, u1 VARCHAR(64), u2 VARCHAR(64), u3 VARCHAR(64), u4 VARCHAR(64), u5 VARCHAR(32), m1 VARCHAR(32), m2 VARCHAR(32), m3 VARCHAR(32), m4 VARCHAR(32), m5 VARCHAR(32))"
-  cursor.execute(cr)
+  s = "UPDATE users SET token = (%s) WHERE username = (%s)"
+  salt = bcrypt.gensalt()
+  hashtoken = bcrypt.hashpw(token.encode(), salt)
+  val = (hashtoken, username)
+  cursor.execute(s, val)
   db.commit()
-  # Prove existance of meme
-  cr = "SELECT username, img_name FROM imgstore WHERE username=%s AND img_name=%s"
-  cursor.execute(cr, (creator, imgname,))
-  detec = cursor.fetchall()
-  print("Executed existance SQL code", flush=True);
-  if not detec:
+  return None
+
+def verifyToken(username, token):
+  cursor = db.cursor()
+  cursor.execute("SELECT token FROM users WHERE username = (%s)", (username,))
+  res = cursor.fetchall()
+  htoken = res[0][0]
+  if not htoken:
     return False
-  # TODO FIGURE OUT HOW TO SELECT A SPECIFIC USER
-  user = "testuser1"
-  # currently a dummy user is used independent of user database
-  cr = "SELECT * FROM history WHERE username=%s"
-  cursor.execute(cr, (user,))
-  detec = cursor.fetchall()
-  if not detec:
-    create = "INSERT INTO history (username, idx, u1, m1) VALUES (%s, %s, %s, %s)"
-    cursor.execute(create, (user, 2, creator, imgname,))
-    db.commit()
+  print(token)
+  print(htoken)
+  if(bcrypt.checkpw(token.encode(), htoken.encode())):
+    print("authenticated")
     return True
-  cr = "SELECT idx FROM history WHERE username=(%s)"
-  cursor.execute(cr, (user,))
-  index = cursor.fetchall()[0][0]
-  cr = "UPDATE history SET u%s=%s, m%s=%s, idx=%s WHERE username=%s"
-  cursor.execute(cr, (index, creator, index, imgname, (index+1)%5, user,))
-  return True
+  else:
+    print(token, flush=True)
+    print(htoken, flush=True)
+    print("not valid")
+    return False
+
 
 def authgetData(username):
   return None
-
