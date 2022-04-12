@@ -31,6 +31,10 @@ def send_engine(path):
 def send_styles(path):
     return send_from_directory('css', path)
 
+@app.route('/static/samplememe')
+def send_samplememe():
+    return send_from_directory("jpg", "/static/samplememe")
+
 @app.route("/login", methods=["GET","POST"])
 def login():
     if request.method == "GET":
