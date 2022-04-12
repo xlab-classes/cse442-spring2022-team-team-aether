@@ -1,7 +1,10 @@
 from flask import Flask, render_template, send_from_directory, request, make_response, redirect, url_for
+from re import template
+from flask import Flask, render_template, send_from_directory, request
 import authController
 import datetime
 import secrets
+import generate
 app = Flask(__name__)
 
 
@@ -10,9 +13,18 @@ app = Flask(__name__)
 def root():
     return render_template("index.html")
 
-@app.route("/make")
+@app.route("/make", methods=["GET", "POST"])
 def make():
-    return render_template("make.html")
+    if request.method == "GET":
+        return render_template("make.html")
+    else:
+        data = request.form.to_dict()
+        print(data["templates"])
+        print(data["TextColor"])
+        print(data["FirstText"])
+        print(data["SecondText"])
+        generate.generate_image(data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
+        return "sucessfully made image"
 
 @app.route('/static/frontEngine')
 def send_engine(path):
@@ -34,16 +46,8 @@ def login():
         data = request.form.to_dict()
         username = data["Username"]
         password = data["Password"]
-        if (authController.authlogin(username, password)):
-            key = secrets.token_urlsafe()
-            authController.updateToken(username, key)
-            resp = make_response(render_template('account.html'))
-            resp.set_cookie("AuthToken", key, expires=datetime.datetime.now() + datetime.timedelta(days=30))
-            resp.set_cookie("User", username, expires=datetime.datetime.now() + datetime.timedelta(days=30))
-            return resp
-        else:
-            return "Login Failed, Incorrect username or Password"
-
+        authController.authlogin(username, password)
+        return render_template('account.html')
 @app.route("/createaccount", methods=["GET","POST"])
 def createaccount():
     if request.method == "GET":
@@ -52,26 +56,15 @@ def createaccount():
         data = request.form.to_dict()
         username = data["Username"]
         password = data["Password"]
-        if (authController.authcreateAccount(username, password)):
-            return render_template('account.html')
-        else:
-            return "Account Creation Failed"
+        authController.authcreateAccount(username, password)
+        return render_template('account.html')
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
 
 @app.route("/account")
 def account():
-    user = request.cookies.get("User")
-    token = request.cookies.get("AuthToken")
-    if(user == None or token == None):
-        print("redirect")
-        return redirect(url_for("login"))
-    if authController.verifyToken(user, token):
-        return render_template('account.html', username=user)
-    else:
-        print("non valid")
-        return redirect(url_for("login"))
+    return render_template('account.html')
 
 @app.route("/search")
 def search():
