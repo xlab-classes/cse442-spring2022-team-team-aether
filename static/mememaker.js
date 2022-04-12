@@ -91,12 +91,12 @@ function updateImage(){
     updateCanvas(canvas, image, text1, text2, filename, textColor)
 }
 function download() {
-    var canvas = document.getElementById("meme");
-    var ctx = canvas.getContext("2d")
+    //var canvas = document.getElementById("meme");
+    //var ctx = canvas.getContext("2d")
     //var what = ctx.getImageData()
     //console.log(what)
-    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
-    console.log(image)
+    //var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+    //console.log(image)
     //var link = document.createElement('a');
     //link.download = "my-image.png";
     //link.href = image;
