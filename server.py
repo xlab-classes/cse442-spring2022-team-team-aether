@@ -38,8 +38,8 @@ def login():
             key = secrets.token_urlsafe()
             authController.updateToken(username, key)
             resp = make_response(render_template('account.html'))
-            resp.set_cookie("AuthToken", key, expires=datetime.datetime.now() + datetime.timedelta(days=7))
-            resp.set_cookie("User", username, expires=datetime.datetime.now() + datetime.timedelta(days=7))
+            resp.set_cookie("AuthToken", key, expires=datetime.datetime.now() + datetime.timedelta(days=30))
+            resp.set_cookie("User", username, expires=datetime.datetime.now() + datetime.timedelta(days=30))
             return resp
         else:
             return "Login Failed, Incorrect username or Password"
@@ -65,10 +65,12 @@ def account():
     user = request.cookies.get("User")
     token = request.cookies.get("AuthToken")
     if(user == None or token == None):
+        print("redirect")
         return redirect(url_for("login"))
     if authController.verifyToken(user, token):
         return render_template('account.html', username=user)
     else:
+        print("non valid")
         return redirect(url_for("login"))
 
 @app.route("/search")

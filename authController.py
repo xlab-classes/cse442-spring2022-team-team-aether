@@ -29,7 +29,7 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE users (username VARCHAR(64), password VARCHAR(64), token VARCHAR(64))"
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64), token VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
@@ -55,6 +55,7 @@ def updateToken(username, token):
   hashtoken = bcrypt.hashpw(token.encode(), salt)
   val = (hashtoken, username)
   cursor.execute(s, val)
+  db.commit()
   return None
 
 def verifyToken(username, token):
@@ -70,6 +71,9 @@ def verifyToken(username, token):
     print("authenticated")
     return True
   else:
+    print(token, flush=True)
+    print(htoken, flush=True)
+    print("not valid")
     return False
 
 
