@@ -1,5 +1,7 @@
 import mysql.connector
 import bcrypt
+import hashlib
+import base64
 
 db = mysql.connector.connect(
   host="localhost",
@@ -27,7 +29,7 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
+  cr = "CREATE TABLE users (username VARCHAR(64), password VARCHAR(64), token VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
@@ -45,6 +47,31 @@ def authcreateAccount(username, password):
   cursor.execute(addU, val)
   db.commit()
   return True
+
+def updateToken(username, token):
+  cursor = db.cursor()
+  s = "UPDATE users SET token = (%s) WHERE username = (%s)"
+  salt = bcrypt.gensalt()
+  hashtoken = bcrypt.hashpw(token.encode(), salt)
+  val = (hashtoken, username)
+  cursor.execute(s, val)
+  return None
+
+def verifyToken(username, token):
+  cursor = db.cursor()
+  cursor.execute("SELECT token FROM users WHERE username = (%s)", (username,))
+  res = cursor.fetchall()
+  htoken = res[0][0]
+  if not htoken:
+    return False
+  print(token)
+  print(htoken)
+  if(bcrypt.checkpw(token.encode(), htoken.encode())):
+    print("authenticated")
+    return True
+  else:
+    return False
+
 
 def authgetData(username):
   return None
