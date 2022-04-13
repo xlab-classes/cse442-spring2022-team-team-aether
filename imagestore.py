@@ -8,25 +8,36 @@ db = mysql.connector.connect(
 )
 
 
-def imgstore(username, imgname, imgbyte): 
+def imgstore(username, img_tag, img_file): 
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS imgstore (username varchar(64), img_name varchar(64), img_byte varbinary(max) foreign key (username) references users (username) "
+  cr = '''CREATE TABLE IF NOT EXISTS imgstore( 
+    username varchar(64), 
+    itag varchar(32),
+    img_bytes varbinary(8000)
+    )'''
   cursor.execute(cr)
   db.commit()
+  print("created table")
 
-  insVal = "INSERT INTO imgstore (username, img_name, img_byte) VALUES (%s, %s, %s)"
-  val = [username, imgname, imgbyte]
-  print(val)
-  cursor.execute(insVal, val)
+  imgUname = "INSERT INTO imgstore (username, itag) VALUES (%s, %s)"
+  insVal = [username, img_tag]
+  cursor.execute(imgUname, insVal)
   db.commit()
-  return True
-
-###
-# def getimg(username, imgname): 
-#   cursor = db.cursor()
-#   query = "SELECT img_byte FROM imgstore WHERE username = %s AND img_name = %s"
-#   cursor.execute(query, (username, imgname))
-
-
+  print("username & imgtag inserted")
   
+  with open(img_file, "rb") as image:
+    img = image.read()
+    imgby = bytearray(img)
+    print(len(imgby))
+    cursor.execute("INSERT INTO imgstore (img_bytes) VALUES (%s)", (imgby,))
+    db.commit()
+  
+  print("received file")
+
+
+
+
+
+
+
 

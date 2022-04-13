@@ -27,7 +27,7 @@ def authlogin(username, password):
 
 def authcreateAccount(username, password):
   cursor = db.cursor()
-  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64), primary key (username))"
+  cr = "CREATE TABLE IF NOT EXISTS users (username VARCHAR(64), password VARCHAR(64))"
   cursor.execute(cr)
   db.commit()
   cursor.execute("SELECT password FROM users WHERE username = (%s)", (username,))
@@ -48,3 +48,4 @@ def authcreateAccount(username, password):
 
 def authgetData(username):
   return None
+
