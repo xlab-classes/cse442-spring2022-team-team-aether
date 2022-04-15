@@ -1,4 +1,7 @@
 import mysql.connector
+from PIL import Image 
+import io
+import os 
 
 db = mysql.connector.connect(
   host="localhost",
@@ -8,35 +11,43 @@ db = mysql.connector.connect(
 )
 
 
-def imgstore(username, img_tag, img_file): 
+def imgstore(username, img_name): 
   cursor = db.cursor()
   cr = '''CREATE TABLE IF NOT EXISTS imgstore( 
     username varchar(64), 
-    itag varchar(32),
-    img_bytes varbinary(8000)
+    imgname varchar(32),
+    imgbytes varbinary(65000)
     )'''
+  
   cursor.execute(cr)
   db.commit()
   print("created table")
-
-  imgUname = "INSERT INTO imgstore (username, itag) VALUES (%s, %s)"
-  insVal = [username, img_tag]
-  cursor.execute(imgUname, insVal)
-  db.commit()
-  print("username & imgtag inserted")
   
+  img_file = img_name + ".jpg"
   with open(img_file, "rb") as image:
     img = image.read()
-    imgby = bytearray(img)
-    print(len(imgby))
-    cursor.execute("INSERT INTO imgstore (img_bytes) VALUES (%s)", (imgby,))
-    db.commit()
+    imgbytes = bytes(img)
   
-  print("received file")
+  stmt = "INSERT INTO imgstore VALUES (%s, %s, %s)" 
+  insval = [username, img_name, imgbytes]
+  cursor.execute(stmt, insval)
+  db.commit()
+  print(True)
 
+  
+#imgstore("testuser", "test_img")
 
+def getimg(username, img_name):
+  cursor = db.cursor()
+  cursor.execute("SELECT imgbytes FROM imgstore WHERE username = %s AND imgname = %s", (username, img_name, ))
+  res = cursor.fetchall()
+  img_data = res[0][0]
+  image = Image.open(io.BytesIO(img_data))
+  image.save(img_name + '.jpg')
+  
+  print(True)
 
-
+getimg("testuser", "test_img")
 
 
 
