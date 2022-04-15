@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, send_from_directory, request, make_response, redirect, url_for
 from re import template
 from flask import Flask, render_template, send_from_directory, request
@@ -6,6 +7,7 @@ import datetime
 import secrets
 import generate
 app = Flask(__name__)
+
 
 
 @app.route("/index")
@@ -23,8 +25,13 @@ def make():
         print(data["TextColor"])
         print(data["FirstText"])
         print(data["SecondText"])
-        generate.generate_image(data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
-        return "sucessfully made image"
+        username = request.cookies["User"]
+        token = request.cookies["AuthToken"]
+        if (authController.verifyToken(username, token)):
+            generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
+            return "sucessfully made image"
+        else:
+            return redirect(url_for("login"))
 
 @app.route('/static/frontEngine')
 def send_engine(path):
@@ -70,13 +77,13 @@ def account():
 def search():
     return render_template('search.html')
 
-@app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
-def imgpage(creator,imgname):
-    found = historydb.storeInHistory(creator,imgname)
-    if not found:
-        return "The meme you are looking for does not exist"
-    return 'Received ' + imgname + ' by ' + creator
-    # return '<image src="FIGURE_ME_OUT.jpg">'
+# @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
+# def imgpage(creator,imgname):
+#     #found = historydb.storeInHistory(creator,imgname)
+#     if not found:
+#         return "The meme you are looking for does not exist"
+#     return 'Received ' + imgname + ' by ' + creator
+#     # return '<image src="FIGURE_ME_OUT.jpg">'
 
 if __name__ == "__main__":
     app.run(debug=True)
