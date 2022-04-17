@@ -4,6 +4,7 @@ from re import template
 from flask import Flask, render_template, send_from_directory, request
 import authController
 import datetime
+import secrets
 
 import generate
 
