@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap" rel="stylesheet"> 
     <title>Make</title>
 </head>
 <body>
@@ -19,5 +22,61 @@
         </ul>
     </div>
     <br>
+    <div id="makebox">
+        <div id="memebox">
+            <canvas id="meme"></canvas>
+        </div>
+        <div id="options">
+            <form action="/make" id="make" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                    <td><label for="templates">Choose a template:</label></td>
+                    <td><select id="templates" name="templates">
+                        <option value="drake">Drake</option>
+                        <option value="uno">Or Draw 25</option>
+                        <option value="cheating">Cheating Man</option>
+                        <option value="trade">Trade Offer</option>
+                    </select> </td>
+                    </tr>
+                    <!--<br>-->
+                    <tr>
+                    <td><label for="TextColor">Font Color: </label></td>
+                    <td><select name="TextColor" id="TextColor">
+                        <option value="black">Black</option>
+                        <option value="white">White</option>
+                    </select></td>
+                    </tr>
+                    <br>
+                    <tr>
+                    <td><label for="FirstText">First Line: </label></td>
+                    <td><input id="FirstText" type="text" name="FirstText"></td>
+                    </tr>
+                    <br>
+                    <tr>
+                    <td><label for="SecondText">Second Line: </label></td>
+                    <td><input id="SecondText" type="text" name="SecondText"></td>
+                    <br>
+                    </tr>
+                    <tr>
+                    <td><input type="submit" value="make" onclick="updateImage();"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a id="download" download="meme.png">
+                                <button type="button" onclick="download()">Download</button>
+                                </a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>  
+    <br>
+    <h3>Template Options</h3>
+    <img src="../generationFiles/drake.jpg" alt="toload" id="backup">
+    <img src="../generationFiles/uno.jpg" alt="toload" id="backup">
+    <img src="../generationFiles/cheating.jpg" alt="toload" id="backup">
+    <img src="../generationFiles/trade.jpg" alt="toload" id="backup">
+    <script type = "text/javascript" src="../static/mememaker.js"></script>
 </body>
 </html>

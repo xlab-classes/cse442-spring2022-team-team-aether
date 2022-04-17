@@ -1,8 +1,9 @@
 from flask import Flask, render_template, send_from_directory, request
 import authController
-
+import datetime
+import secrets
+import generate
 app = Flask(__name__)
-
 
 
 @app.route("/index")
@@ -14,8 +15,8 @@ def root():
 def make():
     return render_template("make.html")
 
-@app.route('/static/hasher')
-def send_hash(path):
+@app.route('/static/frontEngine')
+def send_engine(path):
     return send_from_directory('js', path)
 
 @app.route('/static/styles')
@@ -40,22 +41,8 @@ def createaccount():
         data = request.form.to_dict()
         username = data["Username"]
         password = data["Password"]
-        flag = True
-        if (not any(chr.isdigit() for chr in password)):
-            print("invalid password, no number present")
-            flag = False
-        if (len(password) < 8):
-            print("password too short")
-            flag = False
-        if (len(password) > 24):
-            print("password too long")
-            flag = False
-        print(password)
-        if (flag):
-            authController.authcreateAccount(username, password)
-            return render_template('account.html')
-        else:
-            return "invalid password chosen"
+        authController.authcreateAccount(username, password)
+        return render_template('account.html')
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
