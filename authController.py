@@ -2,9 +2,9 @@ import mysql.connector
 import bcrypt
 
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="pass",
+  host="oceanus",
+  user="susanbre",
+  password="5018193",
   database="serverdata"
 )
 

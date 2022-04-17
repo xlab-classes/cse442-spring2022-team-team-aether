@@ -1,4 +1,8 @@
+import hashlib
+import os
+import sys
 from PIL import Image, ImageDraw, ImageFont
+import imagestore
 
 
 textLocations = {
@@ -12,7 +16,12 @@ colorOptions = {
     "white": (255, 255, 255)
 }
 
-def generate_image(start, text1, text2, color):
+def generate_image(username, start, text1, text2, color):
+
+    print("generating image")
+    sys.stdout.flush()
+    hhh = hashlib.md5(os.urandom(32)).hexdigest()
+    print(hhh)
     image = Image.open("generationFiles/"+start+".jpg")
     h = image.height
     w = image.width
@@ -29,7 +38,13 @@ def generate_image(start, text1, text2, color):
     edit.text((text1w,text1h), text1, colorNums, font=font)
     edit.text((text2w,text2h), text2, colorNums, font=font)
 
-    image.save("result.jpg")
+    image.save(str(hhh)+".jpg")
+
+    imagestore.imgstore(username, hhh)
+    
+    os.remove(hhh+".jpg")
+    return hhh
+    
 
 
 #generate_image("cheating", "test1", "test2", "white")
