@@ -55,7 +55,7 @@ def createaccount():
         if (authController.authcreateAccount(username, password)):
             return render_template('account.html')
         else:
-            return "Account Creation Failed"
+            return "Account Creation Failed, try another name or password"
 @app.route("/popular")
 def popular():
     return render_template('popular.html')
