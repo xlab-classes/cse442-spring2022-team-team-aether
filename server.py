@@ -73,4 +73,4 @@ if __name__ == "__main__":
     #adhoc is just for testing purposes
     #in order to get a legitament HTTP connection established
     #we need a certificate
-    app.run(debug=True, ssl_context="adhoc")
+    app.run(debug=True, ssl_context=("cert.pem", "key.pem"))
