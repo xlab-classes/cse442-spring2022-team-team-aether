@@ -1,4 +1,6 @@
 import re
+import sys
+from traceback import print_tb
 from flask import Flask, render_template, send_from_directory, request, make_response, redirect, url_for
 from re import template
 from flask import Flask, render_template, send_from_directory, request
@@ -7,6 +9,7 @@ import datetime
 import secrets
 
 import generate
+from imagestore import getimg
 
 app = Flask(__name__)
 
@@ -29,8 +32,13 @@ def make():
         username = request.cookies["User"]
         token = request.cookies["AuthToken"]
         if (authController.verifyToken(username, token)):
-            generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
-            return "sucessfully made image"
+            print("token verified/")
+            name = generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
+            byte = getimg(username, name)
+            response = make_response(byte)
+            response.headers.set('Content-Type', 'image/jpeg')
+            response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % "yourmeme")
+            return response
         else:
             return redirect(url_for("login"))
 
@@ -45,6 +53,22 @@ def send_styles(path):
 @app.route('/static/samplememe')
 def send_samplememe():
     return send_from_directory("jpg", "/static/samplememe")
+
+@app.route('/generationFiles/drake.jpg')
+def send_drake():
+    return send_from_directory("generationFiles","drake.jpg")
+
+@app.route('/generationFiles/trade.jpg')
+def send_trade():
+    return send_from_directory("generationFiles","trade.jpg")
+
+@app.route('/generationFiles/cheating.jpg')
+def send_cheating():
+    return send_from_directory("generationFiles","cheating.jpg")
+
+@app.route('/generationFiles/uno.jpg')
+def send_uno():
+    return send_from_directory("generationFiles","uno.jpg")
 
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -114,4 +138,4 @@ def logout():
 
 if __name__ == "__main__":
     con = ("cert.pem", "key.pem")
-    app.run(ssl_context=con)
+    app.run(host="cheshire.cse.buffalo.edu", port="4639",ssl_context=con)

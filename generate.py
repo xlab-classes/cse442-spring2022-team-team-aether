@@ -1,3 +1,6 @@
+import hashlib
+import os
+import sys
 from PIL import Image, ImageDraw, ImageFont
 import hashlib
 import os
@@ -38,6 +41,7 @@ def generate_image(username, start, text1, text2, color):
     imagestore.imgstore(username, hhh)
     
     os.remove(hhh+".jpg")
+    return hhh
     
 
 
