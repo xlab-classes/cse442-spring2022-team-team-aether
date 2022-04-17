@@ -6,7 +6,7 @@ import base64
 db = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="mysqlRoot00!",
+  password="pass",
   database="serverdata"
 )
 

@@ -1,12 +1,13 @@
 import mysql.connector
 from PIL import Image 
 import io
-import os 
+import os
+
 
 db = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="mysqlRoot00!",
+  password="pass",
   database="serverdata"
 )
 
@@ -24,7 +25,7 @@ def imgstore(username, img_name):
   print("created table")
   
   img_file = img_name + ".jpg"
-  with open(img_file, "rb") as image:
+  with open("test_img.jpg", "rb") as image:
     img = image.read()
     imgbytes = bytes(img)
   
@@ -47,7 +48,7 @@ def getimg(username, img_name):
   
   print(True)
 
-getimg("testuser", "test_img")
+#getimg("testuser", "test_img")
 
 
 
