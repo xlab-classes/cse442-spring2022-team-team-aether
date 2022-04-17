@@ -1,3 +1,6 @@
+import re
+from flask import Flask, render_template, send_from_directory, request, make_response, redirect, url_for
+from re import template
 from flask import Flask, render_template, send_from_directory, request
 import authController
 import datetime
@@ -6,14 +9,29 @@ import generate
 app = Flask(__name__)
 
 
+
 @app.route("/index")
 @app.route("/")
 def root():
     return render_template("index.html")
 
-@app.route("/make")
+@app.route("/make", methods=["GET", "POST"])
 def make():
-    return render_template("make.html")
+    if request.method == "GET":
+        return render_template("make.html")
+    else:
+        data = request.form.to_dict()
+        print(data["templates"])
+        print(data["TextColor"])
+        print(data["FirstText"])
+        print(data["SecondText"])
+        username = request.cookies["User"]
+        token = request.cookies["AuthToken"]
+        if (authController.verifyToken(username, token)):
+            generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
+            return "sucessfully made image"
+        else:
+            return redirect(url_for("login"))
 
 @app.route('/static/frontEngine')
 def send_engine(path):
@@ -22,6 +40,10 @@ def send_engine(path):
 @app.route('/static/styles')
 def send_styles(path):
     return send_from_directory('css', path)
+
+@app.route('/static/samplememe')
+def send_samplememe():
+    return send_from_directory("jpg", "/static/samplememe")
 
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -55,9 +77,13 @@ def account():
 def search():
     return render_template('search.html')
 
+# @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
+# def imgpage(creator,imgname):
+#     #found = historydb.storeInHistory(creator,imgname)
+#     if not found:
+#         return "The meme you are looking for does not exist"
+#     return 'Received ' + imgname + ' by ' + creator
+#     # return '<image src="FIGURE_ME_OUT.jpg">'
 
 if __name__ == "__main__":
-    #adhoc is just for testing purposes
-    #in order to get a legitament HTTP connection established
-    #we need a certificate
-    app.run(debug=True, ssl_context=("cert.pem", "key.pem"))
+    app.run(debug=True)
