@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a335e02b-e78e-4083-9217-f38ed40fb253" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="logout#45" />
+    <option name="OPTIONS">
+      <set>
+        <option value="NO_FF" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="logoutstate#45" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/xlab-classes/cse442-spring2022-team-team-aether" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="25WXXHrgcgZOJKPF92mUM8zs52Y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings sdk-home="C:\Users\Max\AppData\Local\Programs\Python\Python38\python.exe">
+        <option name="mySdkHome" value="C:\Users\Max\AppData\Local\Programs\Python\Python38\python.exe" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Max\PycharmProjects\cse442-spring2022-team-team-aether\static" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.server">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/cse442-spring2022-team-team-aether/front end/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="login.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/cse442-spring2022-team-team-aether/front end/login.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="authController" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Max\PycharmProjects\makeopensource.org\envi\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/authController.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cse442-spring2022-team-team-aether" type="PythonConfigurationType" factoryName="Python">
+      <module name="cse442-spring2022-team-team-aether" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Max\AppData\Local\Programs\Python\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.login.html" />
+      <item itemvalue="Python.cse442-spring2022-team-team-aether" />
+      <item itemvalue="Python.authController" />
+      <item itemvalue="Python.server" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.authController" />
+        <item itemvalue="JavaScript Debug.login.html" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Python.server" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Max\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a335e02b-e78e-4083-9217-f38ed40fb253" name="Default Changelist" comment="" />
+      <created>1645643854624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645643854624</updated>
+      <workItem from="1645643858333" duration="1549000" />
+      <workItem from="1645647135961" duration="629000" />
+      <workItem from="1645819893339" duration="2295000" />
+      <workItem from="1645913602388" duration="175000" />
+      <workItem from="1645990641377" duration="5417000" />
+      <workItem from="1646166700876" duration="223000" />
+      <workItem from="1646168924052" duration="4149000" />
+      <workItem from="1646253996473" duration="71000" />
+      <workItem from="1646620465008" duration="1476000" />
+      <workItem from="1646713553631" duration="953000" />
+      <workItem from="1646714535117" duration="1434000" />
+      <workItem from="1646756868878" duration="2797000" />
+      <workItem from="1646772602909" duration="2968000" />
+      <workItem from="1647030186751" duration="1131000" />
+      <workItem from="1647284787624" duration="2199000" />
+      <workItem from="1647292813271" duration="934000" />
+      <workItem from="1647363410536" duration="22000" />
+      <workItem from="1647366030506" duration="4422000" />
+      <workItem from="1647373450568" duration="5804000" />
+      <workItem from="1647734986784" duration="3345000" />
+      <workItem from="1647806125424" duration="5002000" />
+      <workItem from="1648496237819" duration="80000" />
+      <workItem from="1649099715862" duration="2036000" />
+      <workItem from="1649126152075" duration="5718000" />
+      <workItem from="1649134537680" duration="1657000" />
+      <workItem from="1649177611263" duration="440000" />
+      <workItem from="1649178151544" duration="2684000" />
+      <workItem from="1649187011385" duration="4169000" />
+      <workItem from="1649444866629" duration="1319000" />
+      <workItem from="1649704114667" duration="1839000" />
+      <workItem from="1649728611146" duration="7003000" />
+      <workItem from="1649782682311" duration="923000" />
+      <workItem from="1649788992507" duration="640000" />
+      <workItem from="1649791936967" duration="7020000" />
+      <workItem from="1650045418951" duration="2211000" />
+      <workItem from="1650170304157" duration="1475000" />
+      <workItem from="1650171807879" duration="474000" />
+      <workItem from="1650172305692" duration="212000" />
+      <workItem from="1650172548835" duration="238000" />
+      <workItem from="1650172805942" duration="1402000" />
+      <workItem from="1650176246412" duration="115000" />
+      <workItem from="1650176374407" duration="751000" />
+      <workItem from="1650177135991" duration="4067000" />
+      <workItem from="1650181255594" duration="1865000" />
+    </task>
+    <task id="LOCAL-00001" summary="added server and moved files to templates folder">
+      <created>1645645372985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645645372986</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added links between all server pages&#10;Stubbed out java control form submit&#10;Removed proto login">
+      <created>1645996179385</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645996179385</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added links between all server pages&#10;Stubbed out java control form submit&#10;Removed proto login">
+      <created>1645996270088</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645996270088</updated>
+    </task>
+    <task id="LOCAL-00004" summary="implemented front end login data submission.&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path">
+      <created>1646759537860</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1646759537860</updated>
+    </task>
+    <task id="LOCAL-00005" summary="implemented front end login data submission.&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path&#10;#16">
+      <created>1646773413480</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1646773413480</updated>
+    </task>
+    <task id="LOCAL-00006" summary="implemented front end login data submission #16&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path">
+      <created>1646773592528</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1646773592528</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Standardized variable names, changed HTML #27">
+      <created>1647030589622</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1647030589623</updated>
+    </task>
+    <task id="LOCAL-00008" summary="imported bcrypt, changed auth controller #25">
+      <created>1647286524587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1647286524587</updated>
+    </task>
+    <task id="LOCAL-00009" summary="connected front end to database #25">
+      <created>1647370303570</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647370303570</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finished hashing passwords and login #25">
+      <created>1647738336893</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1647738336893</updated>
+    </task>
+    <task id="LOCAL-00011" summary="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;further edge cases may still need to be adressed to prevent future bugs">
+      <created>1647806571765</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1647806571766</updated>
+    </task>
+    <task id="LOCAL-00012" summary="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;further edge cases may still need to be addressed to prevent future bugs&#10;also, changed host to localhost">
+      <created>1647806861477</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1647806861477</updated>
+    </task>
+    <task id="LOCAL-00013" summary="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;also, changed host to localhost&#10;fixed edge cases of nonexistent and already existing users">
+      <created>1647822765945</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1647822765945</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added HTTPS, and password restrictions #36&#10;-adhoc is not a certificate authority&#10;-will need a legitimate one later on down the road">
+      <created>1649180366855</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649180366855</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added HTTPS, and password restrictions #36&#10;-adhoc is not a certificate authority&#10;-will need a legitimate one later on down the road">
+      <created>1649180730230</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649180730230</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added AuthTokens+dynHTML #43&#10;-two cookies are being used, user + token&#10;-needed to identify user&#10;-dynamically rendering pages is now available">
+      <created>1649735636828</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649735636828</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added AuthTokens+dynHTML #43&#10;-two cookies are being used, user + token&#10;-needed to identify user&#10;-dynamically rendering pages is now available&#10;-fixed DB commit bug">
+      <created>1649783568590</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649783568590</updated>
+    </task>
+    <task id="LOCAL-00018" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650171064262</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650171064262</updated>
+    </task>
+    <task id="LOCAL-00019" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650171421160</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650171421160</updated>
+    </task>
+    <task id="LOCAL-00020" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650171478057</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1650171478057</updated>
+    </task>
+    <task id="LOCAL-00021" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650179310720</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1650179310720</updated>
+    </task>
+    <task id="LOCAL-00022" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650179435666</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1650179435666</updated>
+    </task>
+    <task id="LOCAL-00023" summary="changed certs for deployment #36&#10;-added pem files">
+      <created>1650180176060</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1650180176060</updated>
+    </task>
+    <task id="LOCAL-00024" summary="local issue #43&#10;-local rebase">
+      <created>1650180500854</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1650180500854</updated>
+    </task>
+    <task id="LOCAL-00025" summary="reincorperated issue #43">
+      <created>1650180964983</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1650180964983</updated>
+    </task>
+    <task id="LOCAL-00026" summary="added back missing import">
+      <created>1650181313888</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650181313888</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added logout#45">
+      <created>1650183062696</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650183062696</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/loggedinState#43" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added server and moved files to templates folder" />
+    <MESSAGE value="Added links between all server pages&#10;Stubbed out java control form submit&#10;Removed proto login" />
+    <MESSAGE value="implemented front end login data submission.&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path" />
+    <MESSAGE value="implemented front end login data submission.&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path&#10;#16" />
+    <MESSAGE value="implemented front end login data submission #16&#10;removed use of front engine for login purposes. &#10;added POST request route to the /login path" />
+    <MESSAGE value="Standardized variable names, changed HTML #27" />
+    <MESSAGE value="imported bcrypt, changed auth controller #25" />
+    <MESSAGE value="connected front end to database #25" />
+    <MESSAGE value="finished hashing passwords and login #25" />
+    <MESSAGE value="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;further edge cases may still need to be adressed to prevent future bugs" />
+    <MESSAGE value="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;further edge cases may still need to be addressed to prevent future bugs&#10;also, changed host to localhost" />
+    <MESSAGE value="finished hashing passwords and login #34&#10;create account and login is now working within database&#10;also, changed host to localhost&#10;fixed edge cases of nonexistent and already existing users" />
+    <MESSAGE value="Added HTTPS, and password restrictions #36&#10;-adhoc is not a certificate authority&#10;-will need a legitimate one later on down the road" />
+    <MESSAGE value="Added AuthTokens+dynHTML #43&#10;-two cookies are being used, user + token&#10;-needed to identify user&#10;-dynamically rendering pages is now available" />
+    <MESSAGE value="Added AuthTokens+dynHTML #43&#10;-two cookies are being used, user + token&#10;-needed to identify user&#10;-dynamically rendering pages is now available&#10;-fixed DB commit bug" />
+    <MESSAGE value="changed certs for deployment #36&#10;-added pem files" />
+    <MESSAGE value="local issue #43&#10;-local rebase" />
+    <MESSAGE value="reincorperated issue #43" />
+    <MESSAGE value="added back missing import" />
+    <MESSAGE value="added logout#45" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logout#45" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cse442_spring2022_team_team_aether$authController.coverage" NAME="authController Coverage Results" MODIFIED="1646714494356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cse442_spring2022_team_team_aether$server.coverage" NAME="server Coverage Results" MODIFIED="1650183017008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cse442_spring2022_team_team_aether$cse442_spring2022_team_team_aether.coverage" NAME="cse442-spring2022-team-team-aether Coverage Results" MODIFIED="1650178352399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>
