@@ -41,4 +41,4 @@ def generate_image(username, start, text1, text2, color):
     
 
 
-generate_image("cheating", "test1", "test2", "white")
+#generate_image("cheating", "test1", "test2", "white")

@@ -4,8 +4,9 @@ from re import template
 from flask import Flask, render_template, send_from_directory, request
 import authController
 import datetime
-import secrets
+
 import generate
+
 app = Flask(__name__)
 
 
@@ -86,4 +87,5 @@ def search():
 #     # return '<image src="FIGURE_ME_OUT.jpg">'
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    con = ("cert.pem", "key.pem")
+    app.run(ssl_context=con)
