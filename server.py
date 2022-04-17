@@ -97,6 +97,13 @@ def account():
 def search():
     return render_template('search.html')
 
+@app.route("/logout")
+def logout():
+    resp = make_response(render_template('account.html'))
+    resp.set_cookie("AuthToken", "", expires=datetime.datetime.now())
+    resp.set_cookie("User", "", expires=datetime.datetime.now())
+    return resp
+
 # @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
 # def imgpage(creator,imgname):
 #     #found = historydb.storeInHistory(creator,imgname)
