@@ -17,6 +17,7 @@
 
 body{
     background-color: var(--background);
+    font-family: 'BIZ UDGothic', sans-serif;
 }
 h1{
     color: black;
@@ -99,6 +100,28 @@ p{
     padding-bottom: 2%;
     padding-right: 5%;
     border-radius: 10px;
+}
+#makebox{
+    display: flex;
+    justify-content: space-between;
+}
+#memebox{
+    display: flex;
+    justify-content: center;
+    
+}
+#meme{
+    width: 100%;
+    border:1px solid #000000;
+}
+#memebox input{
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+#options{
+    display: flex;
+    justify-content: center;
 }
 .link{
     text-decoration: none;
