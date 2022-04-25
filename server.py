@@ -5,6 +5,7 @@ from flask import Flask, render_template, send_from_directory, request, make_res
 from re import template
 from flask import Flask, render_template, send_from_directory, request
 import authController
+import historydb
 import datetime
 import secrets
 
@@ -128,14 +129,19 @@ def logout():
     resp.set_cookie("User", "", expires=datetime.datetime.now())
     return resp
 
-# @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
-# def imgpage(creator,imgname):
-#     #found = historydb.storeInHistory(creator,imgname)
-#     if not found:
-#         return "The meme you are looking for does not exist"
-#     return 'Received ' + imgname + ' by ' + creator
-#     # return '<image src="FIGURE_ME_OUT.jpg">'
+@app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
+def imgpage(creator,imgname):
+    username = request.cookies["User"]
+    token = request.cookies["AuthToken"]
+    if (authController.verifyToken(username, token)):
+        found = historydb.storeInHistory(creator,imgname,username)
+        if not found:
+            return "The meme you are looking for does not exist"
+        return 'Received ' + imgname + ' by ' + creator
+        # return '<image src="FIGURE_ME_OUT.jpg">'
+    return "You are not a registered user"
 
 if __name__ == "__main__":
     con = ("cert.pem", "key.pem")
     app.run(host="cheshire.cse.buffalo.edu", port="4639",ssl_context=con)
+    #app.run(debug=True)
