@@ -29,6 +29,9 @@ def imgstore(username, img_name):
   db.commit()
   print(True)
 
+  cursor.execute("ALTER TABLE imgstore ADD COLUMN imgtag varchar(32)")
+  db.commit()
+  print(True)
   
 #imgstore("testuser", "test_img")
 
