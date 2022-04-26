@@ -50,6 +50,8 @@ def get_tags(tags):
     tagsList = []
     for item in tags2:
         tagsList.append(item[0:15])
+    while len(tagsList) < 5:
+        tagsList.append("NULL")
     return tagsList
 
 

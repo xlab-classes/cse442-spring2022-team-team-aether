@@ -3,11 +3,12 @@ from PIL import Image
 import io
 import os
 import authController
+import generate
 
 db = authController.db
 
 
-def imgstore(username, img_name): 
+def imgstore(username, img_name, tag_arr): 
   cursor = db.cursor()
   cr = '''CREATE TABLE IF NOT EXISTS imgstore( 
     username varchar(64), 
@@ -16,7 +17,7 @@ def imgstore(username, img_name):
     )'''
   cursor.execute(cr)
   db.commit()
-  print("created table")
+  print("created table imgstore")
   
   img_file = img_name + ".jpg"
   with open(img_file, "rb") as image:
@@ -29,9 +30,25 @@ def imgstore(username, img_name):
   db.commit()
   print(True)
 
-  cursor.execute("ALTER TABLE imgstore ADD COLUMN IF NOT EXISTS imgtag varchar(32)")
+  tag_cr = '''CREATE TABLE IF NOT EXISTS imgtags( 
+    username varchar(64), 
+    imghash varchar(32),
+    tag1 varchar(16),
+    tag2 varchar(16),
+    tag3 varchar(16),
+    tag4 varchar(16),
+    tag5 varchar(16)
+    )'''
+  cursor.execute(tag_cr)
   db.commit()
-  print(True)
+  print("created table imgtags")
+
+  cursor.execute("INSERT INTO imgtags VALUES (%s, %s, %s, %s, %s, %s, %s)", (username, img_name, tag_arr[0], tag_arr[1], tag_arr[2], tag_arr[3], tag_arr[4], ))
+  db.commit()
+  return(True)
+
+
+
   
 #imgstore("testuser", "test_img")
 
@@ -47,6 +64,8 @@ def getimg(username, img_name):
   return img_data
 
 #getimg("testuser", "test_img")
+
+
 
 
 
