@@ -56,5 +56,3 @@ def get_tags(tags):
 
 
 #generate_image("cheating", "test1", "test2", "white")
-
-print(get_tags("f   uadasdajkdjasjd;landsadl;adjnlsndadck, shit, ass         "))
