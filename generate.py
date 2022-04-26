@@ -38,7 +38,7 @@ def generate_image(username, start, text1, text2, color):
 
     image.save(str(hhh)+".jpg")
 
-    #imagestore.imgstore(username, hhh)
+    imagestore.imgstore(username, hhh)
     
     os.remove(hhh+".jpg")
     return hhh
@@ -46,10 +46,13 @@ def generate_image(username, start, text1, text2, color):
 
 def get_tags(tags):
     test = tags.replace(" ", '')
-    tagsList = test.split(",", 4)
+    tags2 = test.split(",", 4)
+    tagsList = []
+    for item in tags2:
+        tagsList.append(item[0:15])
     return tagsList
 
 
 #generate_image("cheating", "test1", "test2", "white")
 
-print(get_tags("f   uck, shit, ass         "))
+print(get_tags("f   uadasdajkdjasjd;landsadl;adjnlsndadck, shit, ass         "))
