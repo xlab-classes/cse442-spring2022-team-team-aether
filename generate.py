@@ -17,7 +17,7 @@ colorOptions = {
     "white": (255, 255, 255)
 }
 
-def generate_image(username, start, text1, text2, color):
+def generate_image(username, start, text1, text2, color, tags):
     hhh = hashlib.md5(os.urandom(32)).hexdigest()
     print(hhh)
     image = Image.open("generationFiles/"+start+".jpg")
@@ -38,7 +38,7 @@ def generate_image(username, start, text1, text2, color):
 
     image.save(str(hhh)+".jpg")
 
-    imagestore.imgstore(username, hhh)
+    imagestore.imgstore(username, hhh, tags)
     
     os.remove(hhh+".jpg")
     return hhh
