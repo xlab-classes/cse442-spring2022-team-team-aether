@@ -59,14 +59,17 @@
                     <br>
                     </tr>
                     <tr>
+                        <td><label for="tags">Tags:</label></td>
+                        <td><input type="text" name="tags" id="tags"></td>
+                    </tr>
+                    <tr>
                     <td><input type="submit" value="make" onclick="updateImage();"></td>
                     </tr>
                     <tr>
-                        <td>
-                            <a id="download" download="meme.png">
-                                <button type="button" onclick="download()">Download</button>
-                                </a>
-                        </td>
+                        <td>tags longer than 16 characters will be cut off at 16 characters</td>
+                    </tr>
+                    <tr>
+                        <td>add up to 5 tags in a comma separated list, spaces will be stripped out</td>
                     </tr>
                 </table>
             </form>

@@ -30,12 +30,14 @@ def make():
         print(data["TextColor"])
         print(data["FirstText"])
         print(data["SecondText"])
+        print(data["tags"])
         username = request.cookies["User"]
         token = request.cookies["AuthToken"]
         if (authController.verifyToken(username, token)):
             print("token verified/")
             name = generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"])
             byte = getimg(username, name)
+            tags = generate.get_tags(data["tags"])
             response = make_response(byte)
             response.headers.set('Content-Type', 'image/jpeg')
             response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % "yourmeme")

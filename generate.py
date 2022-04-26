@@ -44,5 +44,15 @@ def generate_image(username, start, text1, text2, color):
     return hhh
     
 
+def get_tags(tags):
+    test = tags.replace(" ", '')
+    tags2 = test.split(",", 4)
+    tagsList = []
+    for item in tags2:
+        tagsList.append(item[0:15])
+    return tagsList
+
 
 #generate_image("cheating", "test1", "test2", "white")
+
+print(get_tags("f   uadasdajkdjasjd;landsadl;adjnlsndadck, shit, ass         "))
