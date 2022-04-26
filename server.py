@@ -131,8 +131,10 @@ def logout():
 
 @app.route("/img/<creator>/<imgname>", methods=["GET", "POST"])
 def imgpage(creator,imgname):
-    username = request.cookies["User"]
-    token = request.cookies["AuthToken"]
+    username = request.cookies.get("User")
+    token = request.cookies.get("AuthToken")
+    if(username==None):
+        return redirect(url_for("login"))
     if (authController.verifyToken(username, token)):
         found = historydb.storeInHistory(creator,imgname,username)
         if not found:
