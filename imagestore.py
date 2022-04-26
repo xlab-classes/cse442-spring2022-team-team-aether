@@ -29,7 +29,7 @@ def imgstore(username, img_name):
   db.commit()
   print(True)
 
-  cursor.execute("ALTER TABLE imgstore ADD COLUMN imgtag varchar(32)")
+  cursor.execute("ALTER TABLE imgstore ADD COLUMN IF NOT EXISTS imgtag varchar(32)")
   db.commit()
   print(True)
   
