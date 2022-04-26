@@ -8,6 +8,7 @@ import authController
 import historydb
 import datetime
 import secrets
+import searchEngine
 
 import generate
 from imagestore import getimg
@@ -118,9 +119,14 @@ def account():
         print("non valid")
         return redirect(url_for("login"))
 
-@app.route("/search")
+@app.route("/search", methods=["GET", "POST"])
 def search():
-    return render_template('search.html')
+    if request.method == "POST":
+        return None
+    else:
+        query = ["Max"]
+        print(searchEngine.search(query))
+        return render_template('search.html')
 
 @app.route("/logout")
 def logout():
@@ -143,5 +149,5 @@ def imgpage(creator,imgname):
 
 if __name__ == "__main__":
     con = ("cert.pem", "key.pem")
-    app.run(host="cheshire.cse.buffalo.edu", port="4639",ssl_context=con)
+    app.run(ssl_context=con)
     #app.run(debug=True)
