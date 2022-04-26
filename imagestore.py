@@ -30,8 +30,8 @@ def imgstore(username, img_name, tag_arr):
   db.commit()
   print(True)
 
+
   tag_cr = '''CREATE TABLE IF NOT EXISTS imgtags( 
-    username varchar(64), 
     imghash varchar(32),
     tag1 varchar(16),
     tag2 varchar(16),
@@ -42,8 +42,8 @@ def imgstore(username, img_name, tag_arr):
   cursor.execute(tag_cr)
   db.commit()
   print("created table imgtags")
-
-  cursor.execute("INSERT INTO imgtags VALUES (%s, %s, %s, %s, %s, %s, %s)", (username, img_name, tag_arr[0], tag_arr[1], tag_arr[2], tag_arr[3], tag_arr[4], ))
+  
+  cursor.execute("INSERT INTO imgtags VALUES (%s, %s, %s, %s, %s, %s)", (img_name, tag_arr[0], tag_arr[1], tag_arr[2], tag_arr[3], tag_arr[4], ))
   db.commit()
   return(True)
 

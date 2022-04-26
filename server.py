@@ -126,7 +126,7 @@ def search():
     if request.method == "POST":
         return None
     else:
-        query = ["Max"]
+        query = ["bag"]
         print(searchEngine.search(query))
         return render_template('search.html')
 

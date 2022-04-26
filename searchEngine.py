@@ -6,7 +6,7 @@ db = authController.db
 
 def search(query):
     cursor = db.cursor()
-    cs = "SELECT * FROM users"
+    cs = "SELECT * FROM imgtags"
     cursor.execute(cs)
     results = cursor.fetchall()
     ret = []
