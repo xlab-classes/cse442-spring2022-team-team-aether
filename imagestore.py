@@ -47,8 +47,6 @@ def imgstore(username, img_name, tag_arr):
   db.commit()
   return(True)
 
-
-
   
 #imgstore("testuser", "test_img")
 
@@ -68,10 +66,14 @@ def getuserimg(username, img_name):
 def getall():
   cursor = db.cursor()
   cursor.execute("SELECT * FROM imgstore")
-  result = cursor.fetchmany(20)
-
+  result = cursor.fetchall()
   return result 
 
+def imgbyhash(hashval):
+  cursor = db.cursor()
+  cursor.execute("SELECT imgbytes FROM imgstore where imgname = %s", (hashval,))
+  result = cursor.fetchall()
+  return result 
 
 
 
