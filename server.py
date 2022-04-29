@@ -11,7 +11,7 @@ import secrets
 import searchEngine
 
 import generate
-from imagestore import getimg
+from imagestore import getuserimg
 
 app = Flask(__name__)
 
@@ -38,7 +38,7 @@ def make():
             print("token verified/")
             tags = generate.get_tags(data["tags"])
             name = generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"], tags)
-            byte = getimg(username, name)
+            byte = getuserimg(username, name)
             response = make_response(byte)
             response.headers.set('Content-Type', 'image/jpeg')
             response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % "yourmeme")

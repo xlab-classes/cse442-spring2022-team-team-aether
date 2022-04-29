@@ -52,7 +52,7 @@ def imgstore(username, img_name, tag_arr):
   
 #imgstore("testuser", "test_img")
 
-def getimg(username, img_name):
+def getuserimg(username, img_name):
   cursor = db.cursor()
   cursor.execute("SELECT imgbytes FROM imgstore WHERE username = %s AND imgname = %s", (username, img_name, ))
   res = cursor.fetchall()
@@ -65,7 +65,12 @@ def getimg(username, img_name):
 
 #getimg("testuser", "test_img")
 
+def getall():
+  cursor = db.cursor()
+  cursor.execute("SELECT username, imgbytes FROM imgstore")
+  result = cursor.fetchmany(20)
 
+  return result 
 
 
 
