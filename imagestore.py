@@ -71,11 +71,16 @@ def getall():
   return result 
 
 def imgbyhash(hashval):
+  db.reconnect()
   print("in imgbyhash")
   sys.stdout.flush()
   cursor = db.cursor()
   cursor.execute("SELECT imgbytes FROM imgstore where imgname = %s", (hashval,))
+  print("almsot got the result")
+  sys.stdout.flush()
   result = cursor.fetchall()
+  print("got the result")
+  sys.stdout.flush()
   print(result)
   sys.stdout.flush()
   return result[0][0]
