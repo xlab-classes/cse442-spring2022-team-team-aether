@@ -1,6 +1,7 @@
 import hashlib
 import os
 import sys
+from unicodedata import name
 from PIL import Image, ImageDraw, ImageFont
 import hashlib
 import os
@@ -54,5 +55,27 @@ def get_tags(tags):
         tagsList.append("NULL")
     return tagsList
 
+
+def generate_home(posts):
+    dynam = ""
+    number = 2
+    #len(posts)
+    i = 0
+    while( i < number):
+        current = posts[i]
+        uname = current[0]
+        pname = current[1]
+        imagebyte = current[2]
+        dynam += "<tr><td><p>"+ uname +"</p><img src=/hash/"+ pname +".jpg></td>"
+        i += 1
+        if( number > i):
+            current = posts[i]
+            uname = current[0]
+            pname = current[1]
+            imagebyte = current[2]
+            dynam += "<td><p>"+ uname +"</p><img src=/hash/"+ pname +".jpg></td></tr>"
+        i+=1
+    return dynam
+    
 
 #generate_image("cheating", "test1", "test2", "white")

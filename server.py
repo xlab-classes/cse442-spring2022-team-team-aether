@@ -1,3 +1,4 @@
+from email.mime import image
 import re
 import sys
 from traceback import print_tb
@@ -9,9 +10,11 @@ import historydb
 import datetime
 import secrets
 import searchEngine
+import io
+from PIL import Image
 
 import generate
-from imagestore import getuserimg
+import imagestore
 
 app = Flask(__name__)
 
@@ -19,7 +22,24 @@ app = Flask(__name__)
 @app.route("/index")
 @app.route("/")
 def root():
-    return render_template("index.html")
+    posts = imagestore.getall()
+    content = generate.generate_home(posts)
+    print(content)
+
+    return render_template("index.html", posts = content)
+
+@app.route("/hash/<bytehash>")
+def hashes(bytehash):
+    request.view_args['section']
+    print("in hashes")
+    print(bytehash)
+    imme = imagestore.imgbyhash(bytehash)
+    print(imme)
+    sys.stdout.flush()
+    image = Image.open(io.BytesIO(imme))
+    image.save('temp.jpg')
+    send_from_directory('temp.jpg')
+
 
 @app.route("/make", methods=["GET", "POST"])
 def make():
@@ -38,7 +58,7 @@ def make():
             print("token verified/")
             tags = generate.get_tags(data["tags"])
             name = generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"], tags)
-            byte = getuserimg(username, name)
+            byte = imagestore.getuserimg(username, name)
             response = make_response(byte)
             response.headers.set('Content-Type', 'image/jpeg')
             response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % "yourmeme")

@@ -1,3 +1,4 @@
+import sys
 import mysql.connector
 from PIL import Image 
 import io
@@ -70,10 +71,14 @@ def getall():
   return result 
 
 def imgbyhash(hashval):
+  print("in imgbyhash")
+  sys.stdout.flush()
   cursor = db.cursor()
   cursor.execute("SELECT imgbytes FROM imgstore where imgname = %s", (hashval,))
   result = cursor.fetchall()
-  return result 
+  print(result)
+  sys.stdout.flush()
+  return result[0][0]
 
 
 
