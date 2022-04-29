@@ -67,7 +67,7 @@ def getuserimg(username, img_name):
 
 def getall():
   cursor = db.cursor()
-  cursor.execute("SELECT username, imgbytes FROM imgstore")
+  cursor.execute("SELECT * FROM imgstore")
   result = cursor.fetchmany(20)
 
   return result 
