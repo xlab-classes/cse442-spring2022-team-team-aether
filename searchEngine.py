@@ -18,7 +18,7 @@ def search(query):
         for tag in meme:
             for s in query:
                 if tag == s:
-                    match += 1
+                    match += 4
         if match > 0:
             ret.append((meme[0], match))
     r = sorted(ret, key=com, reverse=True)

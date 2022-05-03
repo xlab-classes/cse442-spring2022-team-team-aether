@@ -426,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650183062696</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added ranker#60">
+      <created>1651608394280</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1651608394280</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +484,8 @@
     <MESSAGE value="reincorperated issue #43" />
     <MESSAGE value="added back missing import" />
     <MESSAGE value="added logout#45" />
-    <option name="LAST_COMMIT_MESSAGE" value="added logout#45" />
+    <MESSAGE value="added ranker#60" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ranker#60" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cse442_spring2022_team_team_aether$authController.coverage" NAME="authController Coverage Results" MODIFIED="1646714494356" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
