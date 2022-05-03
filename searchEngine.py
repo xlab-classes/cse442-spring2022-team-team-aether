@@ -10,6 +10,8 @@ def search(query):
     cursor.execute(cs)
     results = cursor.fetchall()
     ret = []
+    def com(i1, i2):
+        return i1[1] - i2[1]
     print(results)
     for meme in results:
         match = 0
@@ -18,5 +20,6 @@ def search(query):
                 if tag == s:
                     match += 1
         if match > 0:
-            ret.append(meme[0])
-    return ret
+            ret.append((meme[0], match))
+    r = sorted(ret, key=com, reverse=True)
+    return r

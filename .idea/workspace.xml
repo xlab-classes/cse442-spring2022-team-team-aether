@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a335e02b-e78e-4083-9217-f38ed40fb253" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/searchEngine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authController.py" beforeDir="false" afterPath="$PROJECT_DIR$/authController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchEngine.py" beforeDir="false" afterPath="$PROJECT_DIR$/searchEngine.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +33,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="logout#45" />
+    <option name="BRANCH" value="origin/dev" />
     <option name="OPTIONS">
       <set>
         <option value="NO_FF" />
