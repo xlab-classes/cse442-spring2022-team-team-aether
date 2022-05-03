@@ -58,7 +58,7 @@ def get_tags(tags):
 
 def generate_home(posts):
     dynam = ""
-    number = 2
+    number = 4
     #len(posts)
     i = 0
     while( i < number):

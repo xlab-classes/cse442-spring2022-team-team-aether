@@ -1,5 +1,8 @@
+
 from email.mime import image
 from email.parser import BytesHeaderParser
+from multiprocessing.connection import wait
+import os
 import re
 import sys
 from traceback import print_tb
@@ -31,20 +34,26 @@ def root():
 
 @app.route("/hash/<bytehash>")
 def hashes(bytehash):
+    try:
+        os.remove("temp.jpg")
+    except:
+        print('failed')
     print("in hashes")
     sys.stdout.flush()
     real = bytehash.replace(".jpg", '')
-    bb = request.view_args
     #print("in hashes")
-    print(real)
+    #print(real)
+    print("hash inc " + real)
     sys.stdout.flush()
 
     imme = imagestore.imgbyhash(real)
+    print("MADE IT PAST IMME")
+    sys.stdout.flush()
     #print(imme)
     sys.stdout.flush()
     image = Image.open(io.BytesIO(imme))
     image.save('temp.jpg')
-    send_from_directory('temp.jpg')
+    return send_from_directory('','temp.jpg')
 
 
 @app.route("/make", methods=["GET", "POST"])
