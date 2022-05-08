@@ -1,3 +1,9 @@
+
+from asyncio import sleep
+from email.mime import image
+from email.parser import BytesHeaderParser
+from multiprocessing.connection import wait
+import os
 import re
 import sys
 from traceback import print_tb
@@ -9,9 +15,11 @@ import historydb
 import datetime
 import secrets
 import searchEngine
+import io
+from PIL import Image
 
 import generate
-from imagestore import getimg
+import imagestore
 
 app = Flask(__name__)
 
@@ -19,7 +27,43 @@ app = Flask(__name__)
 @app.route("/index")
 @app.route("/")
 def root():
-    return render_template("index.html")
+    posts = imagestore.getall()
+    print(type(posts))
+    sys.stdout.flush()
+    print(len(posts))
+    sys.stdout.flush()
+    posts.reverse()
+    
+    content = generate.generate_home(posts)
+    print(content)
+
+    return render_template("index.html", posts = content)
+
+@app.route("/hash/<bytehash>")
+def hashes(bytehash):
+    try:
+        os.remove("temp.jpg")
+        #print("ah")
+    except:
+        print('failed')
+    print("in hashes")
+    sys.stdout.flush()
+    real = bytehash.replace(".jpg", '')
+    #print("in hashes")
+    #print(real)
+    print("hash inc " + real)
+    sys.stdout.flush()
+
+    imme = imagestore.imgbyhash(real)
+    print("MADE IT PAST IMME")
+    sys.stdout.flush()
+    #print(imme)
+    sys.stdout.flush()
+    image = Image.open(io.BytesIO(imme))
+    image.save("temp.jpg")
+    sleep(10)
+    return send_from_directory('',"temp.jpg")
+
 
 @app.route("/make", methods=["GET", "POST"])
 def make():
@@ -38,7 +82,7 @@ def make():
             print("token verified/")
             tags = generate.get_tags(data["tags"])
             name = generate.generate_image(username, data["templates"], data["FirstText"], data["SecondText"], data["TextColor"], tags)
-            byte = getimg(username, name)
+            byte = imagestore.getuserimg(username, name)
             response = make_response(byte)
             response.headers.set('Content-Type', 'image/jpeg')
             response.headers.set('Content-Disposition', 'attachment', filename='%s.jpg' % "yourmeme")
@@ -52,6 +96,10 @@ def send_engine(path):
 
 @app.route('/static/styles')
 def send_styles(path):
+    return send_from_directory('css', path)
+
+@app.route('/static/darkstyles')
+def send_darkstyles(path):
     return send_from_directory('css', path)
 
 @app.route('/static/samplememe')
@@ -116,7 +164,10 @@ def account():
         print("redirect")
         return redirect(url_for("login"))
     if authController.verifyToken(user, token):
-        return render_template('account.html', username=user)
+
+        imgs = imagestore.getalluserimgs(user)
+        content = generate.generate_user(imgs)
+        return render_template('account.html', username=user, posts = content)
     else:
         print("non valid")
         return redirect(url_for("login"))
@@ -124,11 +175,26 @@ def account():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     if request.method == "POST":
-        return None
+        heads = request.form
+        #print(heads)
+        sys.stdout.flush()
+        terms = heads["searchterms"]
+        q = []
+        q.append(terms)
+        results = searchEngine.search(q)
+        print(terms)
+        sys.stdout.flush()
+        print(results)
+        sys.stdout.flush()
+        content = generate.generate_search_results(results)
+        return render_template('search.html', results = content)
     else:
         query = ["bag"]
         print(searchEngine.search(query))
         return render_template('search.html')
+
+
+
 
 @app.route("/logout")
 def logout():

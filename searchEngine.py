@@ -1,10 +1,12 @@
 import mysql.connector
 import os
 import authController
+import sys
 
 db = authController.db
 
 def search(query):
+    db.reconnect()
     cursor = db.cursor()
     cs = "SELECT * FROM imgtags"
     cursor.execute(cs)

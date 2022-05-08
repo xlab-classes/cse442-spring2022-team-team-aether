@@ -22,6 +22,16 @@
             <li class="item"> <a href="logout" class="link">log out</a> </li>
         </ul>
     </div>
+    <form action="/search" id="search" method="post" enctype="multipart/form-data">
+        <label for="searchterms">Search: </label>
+        <input id="searchterms" type="text" name="searchterms">
+        <input type="submit" value="search">
+    </form>
+
+    <center>
+        {{results |safe}}
+    </center>
+
     <br>
 </body>
 </html>
