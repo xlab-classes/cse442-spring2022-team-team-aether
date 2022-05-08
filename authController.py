@@ -4,9 +4,9 @@ import hashlib
 import base64
 
 db = mysql.connector.connect(
-  host="127.0.0.1",
-  user="root",
-  password="pass",
+  host="",
+  user="",
+  password="",
   database="serverdata"
   
 )
