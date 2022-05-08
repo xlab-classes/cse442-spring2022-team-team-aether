@@ -17,12 +17,18 @@
 
 body{
     background-color: var(--background);
+    font-family: 'BIZ UDGothic', sans-serif;
 }
 h1{
     color: white;
 }
 body{
     color: white;
+}
+
+#headbox{
+    display: flex;
+    justify-content: space-between;
 }
 
 #navbar{

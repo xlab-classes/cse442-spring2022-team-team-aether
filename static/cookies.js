@@ -31,7 +31,7 @@ function submitLightOrDarkCookie() {
 
 
 function startup(){
-    var version = checkcookie()
+    var version = checkcookie();
     if(version == 1){
         swapStyleSheet("../static/darkstyles.css")
         //document.body.style.background = "#000000"

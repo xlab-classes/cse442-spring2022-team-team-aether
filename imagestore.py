@@ -10,7 +10,9 @@ db = authController.db
 
 
 def imgstore(username, img_name, tag_arr): 
+  db.reconnect()
   cursor = db.cursor()
+  cursor.execute('set global max_allowed_packet=67108864')
   cr = '''CREATE TABLE IF NOT EXISTS imgstore( 
     username varchar(64), 
     imgname varchar(32),
@@ -46,40 +48,62 @@ def imgstore(username, img_name, tag_arr):
   
   cursor.execute("INSERT INTO imgtags VALUES (%s, %s, %s, %s, %s, %s)", (img_name, tag_arr[0], tag_arr[1], tag_arr[2], tag_arr[3], tag_arr[4], ))
   db.commit()
+  db.close()
   return(True)
 
   
 #imgstore("testuser", "test_img")
 
 def getuserimg(username, img_name):
+  db.reconnect()
   cursor = db.cursor()
+  cursor.execute('set global max_allowed_packet=67108864')
   cursor.execute("SELECT imgbytes FROM imgstore WHERE username = %s AND imgname = %s", (username, img_name, ))
   res = cursor.fetchall()
   img_data = res[0][0]
   #image = Image.open(io.BytesIO(img_data))
   #image.save(img_name + '.jpg')
-  
+  db.close()
   print(True)
   return img_data
+
+def getalluserimgs(username):
+  db.reconnect()
+  cursor = db.cursor()
+  cursor.execute('set global max_allowed_packet=67108864')
+  cursor.execute("SELECT * FROM imgstore WHERE username = %s", (username,))
+  res = cursor.fetchall()
+  #img_data = res[0][0]
+  #image = Image.open(io.BytesIO(img_data))
+  #image.save(img_name + '.jpg')
+  db.close()
+  print(True)
+  return res
 
 #getimg("testuser", "test_img")
 
 def getall():
-  db.reconnect()
+  if(not db.is_connected()):
+    db.reconnect()
   cursor = db.cursor()
+  cursor.execute('set global max_allowed_packet=67108864')
   cursor.execute("SELECT * FROM imgstore")
   result = cursor.fetchall()
+  db.close()
   return result 
 
 def imgbyhash(hashval):
-  #db.reconnect()
+  if(not db.is_connected()):
+    db.reconnect()
   #print("in imgbyhash")
   sys.stdout.flush()
   cursor = db.cursor()
+  cursor.execute('set global max_allowed_packet=67108864')
   cursor.execute("SELECT imgbytes FROM imgstore where imgname = %s", (hashval,))
   #print("almsot got the result")
   sys.stdout.flush()
   result = cursor.fetchall()
+  db.close()
   #print("got the result")
   sys.stdout.flush()
   #print(result)

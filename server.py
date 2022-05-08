@@ -1,4 +1,5 @@
 
+from asyncio import sleep
 from email.mime import image
 from email.parser import BytesHeaderParser
 from multiprocessing.connection import wait
@@ -27,6 +28,12 @@ app = Flask(__name__)
 @app.route("/")
 def root():
     posts = imagestore.getall()
+    print(type(posts))
+    sys.stdout.flush()
+    print(len(posts))
+    sys.stdout.flush()
+    posts.reverse()
+    
     content = generate.generate_home(posts)
     print(content)
 
@@ -36,6 +43,7 @@ def root():
 def hashes(bytehash):
     try:
         os.remove("temp.jpg")
+        #print("ah")
     except:
         print('failed')
     print("in hashes")
@@ -52,8 +60,9 @@ def hashes(bytehash):
     #print(imme)
     sys.stdout.flush()
     image = Image.open(io.BytesIO(imme))
-    image.save('temp.jpg')
-    return send_from_directory('','temp.jpg')
+    image.save("temp.jpg")
+    sleep(10)
+    return send_from_directory('',"temp.jpg")
 
 
 @app.route("/make", methods=["GET", "POST"])
@@ -87,6 +96,10 @@ def send_engine(path):
 
 @app.route('/static/styles')
 def send_styles(path):
+    return send_from_directory('css', path)
+
+@app.route('/static/darkstyles')
+def send_darkstyles(path):
     return send_from_directory('css', path)
 
 @app.route('/static/samplememe')
@@ -151,7 +164,10 @@ def account():
         print("redirect")
         return redirect(url_for("login"))
     if authController.verifyToken(user, token):
-        return render_template('account.html', username=user)
+
+        imgs = imagestore.getalluserimgs(user)
+        content = generate.generate_user(imgs)
+        return render_template('account.html', username=user, posts = content)
     else:
         print("non valid")
         return redirect(url_for("login"))
@@ -159,11 +175,26 @@ def account():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     if request.method == "POST":
-        return None
+        heads = request.form
+        #print(heads)
+        sys.stdout.flush()
+        terms = heads["searchterms"]
+        q = []
+        q.append(terms)
+        results = searchEngine.search(q)
+        print(terms)
+        sys.stdout.flush()
+        print(results)
+        sys.stdout.flush()
+        content = generate.generate_search_results(results)
+        return render_template('search.html', results = content)
     else:
         query = ["bag"]
         print(searchEngine.search(query))
         return render_template('search.html')
+
+
+
 
 @app.route("/logout")
 def logout():

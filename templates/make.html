@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
+    <link id="sheet" rel="stylesheet" href="../static/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap" rel="stylesheet"> 
     <title>Make</title>
 </head>
-<body>
-    <h2>Make</h2>
+<body onload="start();">
+    <div id="headbox">
+        <div id="headleft"><h2>Make</h2></div>
+        <div id="headright"> <input type="button" value="Dark Mode" onclick="submitLightOrDarkCookie();"></div>
+
+    </div>
     <div id="navbar">
         <ul id="bar" >
             <li class="item"><a href="index" class="link">home</a></li>
@@ -63,16 +67,17 @@
                         <td><input type="text" name="tags" id="tags"></td>
                     </tr>
                     <tr>
-                    <td><input type="submit" value="make" onclick="updateImage();"></td>
+                    <td><input type="submit" value="make"></td>
                     </tr>
+                    </form>
                     <tr>
+                        <td><input type="button" value="preview" onclick="updateImage();"></td>
                         <td>tags longer than 16 characters will be cut off at 16 characters</td>
                     </tr>
                     <tr>
                         <td>add up to 5 tags in a comma separated list, spaces will be stripped out</td>
                     </tr>
                 </table>
-            </form>
         </div>
     </div>  
     <br>
