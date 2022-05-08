@@ -27,6 +27,12 @@ p{
 }
 
 
+#headbox{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 #navbar{
     background-color: var(--main);
     padding: 3px;
@@ -88,6 +94,7 @@ p{
     margin-left: auto;
     margin-right: auto;
     display: block;
+    border: 0px none black;
 }
 #centered{
     display: flex;

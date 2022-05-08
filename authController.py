@@ -4,12 +4,12 @@ import hashlib
 import base64
 
 db = mysql.connector.connect(
-  host="oceanus",
-  user="susanbre",
-  password="5018193",
+  host="127.0.0.1",
+  user="root",
+  password="pass",
   database="serverdata"
+  
 )
-
 
 def authlogin(username, password):
   cursor = db.cursor()
@@ -49,6 +49,7 @@ def authcreateAccount(username, password):
   return True
 
 def updateToken(username, token):
+  db.reconnect()
   cursor = db.cursor()
   s = "UPDATE users SET token = (%s) WHERE username = (%s)"
   salt = bcrypt.gensalt()
@@ -59,6 +60,7 @@ def updateToken(username, token):
   return None
 
 def verifyToken(username, token):
+  db.reconnect()
   cursor = db.cursor()
   cursor.execute("SELECT token FROM users WHERE username = (%s)", (username,))
   res = cursor.fetchall()
@@ -79,4 +81,3 @@ def verifyToken(username, token):
 
 def authgetData(username):
   return None
-
