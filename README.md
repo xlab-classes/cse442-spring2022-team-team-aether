@@ -15,7 +15,7 @@ cse442-spring2022-team-team-aether created by GitHub Classroom
 (if pip doesn't work, try pip3 since your system might have a Python 3 version)
 5. After installing the libraries, go into server.py and change certificate and key to certify the site for the hosted IP address.
 6. In server.py, change the server port according to the ports available for the system.
-7. In authcontroller.py, change the existing database to connect to the machine’s respective database.
+7. In authController.py, change the existing database to connect to the machine’s respective database.
 8. Run server.py. 
   
 
